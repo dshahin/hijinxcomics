@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>drawers</title>
+<TMPL_INCLUDE NAME="../javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="../body.tmpl.html">
+<TMPL_INCLUDE NAME="../toolbar.tmpl.html">
+<br>
+<TMPL_INCLUDE NAME="cashtoolbar.tmpl.html">
+
+
+<h1>drawers</h1>
+<a href=?rm=drawers>open</a> <a href=?rm=drawers&type=closed>all</a>
+<form method=GET >
+<input type=hidden name=rm value=new_drawer>
+opening balance:<input type=text name="open_balance" size=3 maxlength=4 >
+<input type=submit name="new_drawer" size=8 maxlength=8 value="new drawer">
+</form>
+<ul>
+<TMPL_LOOP NAME=DRAWERS>
+<li>drawer id:<TMPL_VAR NAME=id> | 
+<TMPL_VAR NAME=open_date> | 
+<TMPL_VAR NAME=close_date> |
+$<TMPL_VAR NAME=open_balance> |
+</TMPL_LOOP>
+</ul>
+
+</body>
+</html>

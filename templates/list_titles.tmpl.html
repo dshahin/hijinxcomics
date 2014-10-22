@@ -1,0 +1,130 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=store_name> comics titles</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+<script language="JavaScript">
+function checkAll(field)
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = true ;
+}
+
+function uncheckAll(field)
+{
+for (i = 0; i < field.length; i++)
+	field[i].checked = false ;
+}
+</script>
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b> mode:</b><br>
+<b>[<a href="#"onclick="showhide('tooltip');">X</a>] list titles tips:</b>
+<li>click on <b>title</b> to enter title info mode
+<li>click on <b>cycles</b> to enter cycle sheet mode
+<li>click on <b>this week</b> to add this title to this weeks comic list
+<li>click on <b>archive</b> to archive title and remove it from active titles listed
+<li>click on <b>delete</b> to totally delete title info, subs and cycles from database
+</div>
+
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<h1>comic book titles</h1>
+<TMPL_INCLUDE NAME="alphabar.tmpl.html">
+<p>
+<form action="" method=GET>
+	<input type=text size=20 name=upc>
+<input type=hidden name=rm value=search_comic_upc>
+<input type=submit value="search upc"> (*coming soon)
+</form>
+<p>
+active titles with search term <b><TMPL_VAR NAME=letter></b> : <TMPL_VAR NAME=total_titles><p>
+<table bgcolor=black><tr><td>
+<table cellpadding=2 ><tr><td bgcolor=white>
+<center>
+[ <a href=?rm=stats>sort by popularity</a> 
+| <a href=?rm=list_titles&show=all_active>all active</a> 
+| <a href=?rm=list_titles&show=archives>archives</a> 
+| <a href=?rm=subs>sub list</a> 
+| <a href=?rm=list_titles&show=all>all</a> ]</center>
+</td>
+</tr></table>
+</td></tr></table>
+
+<p>
+
+<a href=# onclick="checkAll(document.titles.checked)">check all</a> | 
+<a href=# onclick="uncheckAll(document.titles.checked)">uncheck all</a><br>
+<form action="" method=GET>
+<TMPL_VAR NAME=message>
+	<input type=text size=50 name=new_title>
+<input type=hidden name=rm value=add_title>
+<input type=submit value="add title">
+</td></tr>
+</form>
+
+<form action="" method=GET name=titles>
+<input type=hidden name=rm value=multi>
+<input type=hidden name=letter value=<TMPL_VAR NAME=letter>>
+<table bgcolor=black><tr><td>
+<table border=2 cellpadding=2  bgcolor=#FFFFFF width=500>
+<TMPL_LOOP NAME=TITLES>
+<TMPL_IF NAME=ARCHIVED>
+<tr bgcolor=D9D9D9> 
+<TMPL_ELSE>
+<tr align=left> 
+</TMPL_IF>
+	<td nowrap>
+	<input type=checkbox name=checked value=<TMPL_VAR NAME=id>><a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=name></a> <TMPL_IF NAME=subcount>(<font color=red><TMPL_VAR NAME=subcount> subs)</font></TMPL_IF>
+	</td>
+	<td nowrap align=left> 
+		<center>
+		<a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>">cycles</a> |
+		 week( <a href="?rm=add_this_week&title_id=<TMPL_VAR NAME=id>&week_num=0">this</a>
+				<a href="?rm=add_this_week&title_id=<TMPL_VAR NAME=id>&week_num=1">1</a>
+				<a href="?rm=add_this_week&title_id=<TMPL_VAR NAME=id>&week_num=2">2</a>
+				<a href="?rm=add_this_week&title_id=<TMPL_VAR NAME=id>&week_num=3">3</a>
+				<a href="?rm=add_this_week&title_id=<TMPL_VAR NAME=id>&week_num=4">4</a>
+		) 
+		<TMPL_IF  name=ARCHIVED>
+		| <a href="?rm=unarchive&title_id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>">unarchive</a> |
+		<TMPL_ELSE>
+		| <a href="?rm=archive&title_id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>" onClick="return confirm('really archive <TMPL_VAR NAME=name>?')">archive</a> |
+		</TMPL_IF>
+	   <a href="?rm=delete_title&title_id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>" onClick="return confirm('really delete <TMPL_VAR NAME=name>?')">delete</a>  
+		</center>
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</form>
+</td></tr></table>
+<br>
+<a href=# onclick="checkAll(document.titles.checked)">check all</a> | 
+<a href=# onclick="uncheckAll(document.titles.checked)">uncheck all</a><br>
+<SELECT NAME="action" SIZE=1>
+<OPTION VALUE="archive">archive
+<OPTION VALUE="unarchive">unarchive
+<OPTION VALUE="delete">delete
+<OPTION VALUE="pow">Pick Of the Week
+<OPTION VALUE="pow2">POW 2
+<OPTION VALUE="pow3">POW 3
+<OPTION VALUE="pow4">POW 4
+<OPTION VALUE="pow5">POW 5
+<OPTION VALUE="pow6">POW 6
+<OPTION VALUE="pow7">POW 7
+<OPTION VALUE="pow8">POW 8
+<OPTION VALUE="pow9">POW 9
+<OPTION VALUE="pow10">POW 10
+<OPTION VALUE="pow11">POW 11
+<OPTION VALUE="pow12">POW 12
+<OPTION VALUE="unpow">remove all POW tags
+</SELECT>
+
+<input type=submit value="to checked">
+</form>
+
+
+</body>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>OSD report <TMPL_VAR NAME=date> <TMPL_VAR NAME=dcd_cust_id></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<h1>OSD report </a></h1>
+<a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >view</a> | 
+<a href=?rm=rcv_inv&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >receive</a> | 
+<a href=?rm=osd&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >o/s/d report</a>
+<p>
+invoice date:<TMPL_VAR NAME=date> <br>
+account:<TMPL_VAR NAME=dcd_cust_id> <br>
+<h3>overages</h3>
+<TMPL_LOOP NAME=OVERAGES>
+	<li><TMPL_VAR NAME=over>
+	<TMPL_VAR NAME=itemno>
+	<TMPL_VAR NAME=descr>
+</TMPL_LOOP>
+<h3>shortages</h3>
+<TMPL_LOOP NAME=SHORTAGES>
+	<li><TMPL_VAR NAME=short>
+	<TMPL_VAR NAME=itemno>
+	<TMPL_VAR NAME=descr>
+</TMPL_LOOP>
+<h3>damages</h3>
+<TMPL_LOOP NAME=DAMAGES>
+	<li><TMPL_VAR NAME=damages>
+	<TMPL_VAR NAME=itemno>
+	<TMPL_VAR NAME=descr>
+</TMPL_LOOP>
+</body>
+</html>

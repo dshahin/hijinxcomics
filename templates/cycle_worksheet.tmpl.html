@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>cycle worksheet <TMPL_VAR NAME=WEEK_NUM></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+<script language="JavaScript">
+
+// thanks to the folks at SAJAX for the javascript functions
+// http://www.modernmethod.com/sajax/
+var rs_debug_mode	= false;
+
+// debug function
+function rs_debug(text) { if( rs_debug_mode ) { alert("RSD: " + text); } }
+
+// init function
+function rs_init_object()
+{
+	rs_debug("rs_init_object() called..");
+
+	var A;
+	try	{ A = new ActiveXObject("Msxml2.XMLHTTP"); }
+	catch( e )
+	{
+		try			{ A = new ActiveXObject("Microsoft.XMLHTTP"); }
+		catch( oc )	{ A = null; }
+	}
+
+	if( !A && typeof XMLHttpRequest != "undefined" )	{ A = new XMLHttpRequest(); }
+	if( !A )											{ rs_debug( "Could not create connection object." ); }
+
+	return A;
+}
+
+
+// wrapper for rs_run
+function rs_run()
+{
+	// count args; build URL
+	var i, x, a;
+	a		= rs_run.arguments;
+	var url	= a[0];
+	for( i = 2; i < a.length; i++ ) { url = url + "&rsargs=" + escape( a[i] ); }
+
+	// load object
+	x = rs_init_object();
+	x.open("GET", url, true);
+	x.onreadystatechange = function()
+	{
+		if( x.readyState != 4 ) { return; }
+
+		rs_debug( "received " + x.responseText );
+
+		var status	= x.responseText.charAt(0);
+		var data	= x.responseText.substring(2);
+
+		if( status == "-" ) { alert("Error: " + data ); }
+		else    			{ a[1]( data ); }
+	}
+
+	x.send( null );
+	rs_debug( "rs_run url = " + url );
+	rs_debug( "rs_run waiting.." );
+}
+function calc_callback( z )
+{
+	//document.getElementById("z").value = z;
+}
+
+function do_multiply()
+{
+    var x = document.getElementById("x").value;
+    var y = document.getElementById("y").value;
+    
+    rs_run( "?rm=multiply", calc_callback, x, y );
+}
+
+function rem_this_week(title_id){
+	rs_run ("?rm=ajax_rem_this_week", calc_callback, title_id, title_id);
+}
+</script>
+</head>
+print this for manual cycling all four weeks <a href=?rm=this_week>back to this week</a>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<table border=0>
+<TMPL_LOOP NAME=BOOKS>
+<tr>
+    <td><font size=-3><a href=?rm=cycles&title_id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=title></a></font><TMPL_IF NAME=this_week> (NEW)</TMPL_IF></td>
+<form onsubmit="displayRecentPhrases();" action="#">
+<!-- <td><input type=submit value="update"></td> -->
+     <TMPL_LOOP NAME=ISSUES><td align=right><font size=-3>#<TMPL_VAR NAME=issue></font></td><td align=left><input id="issue" type=text size=2 name=<TMPL_VAR NAME=issue> value=<TMPL_VAR NAME=week_2>></td></TMPL_LOOP>
+</form>
+	<!-- <td><input type=submit value="up"></td> -->
+</tr>
+</TMPL_LOOP>
+</table>
+<hr>
+</body>
+</html>

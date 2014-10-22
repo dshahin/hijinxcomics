@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>hijinx star search</title>
+</head>
+
+<center>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<h1>STAR system search</h1>
+<TMPL_IF NAME=rand_code>
+random item <br>
+	<a href="/images/star/jpg/STAR<TMPL_VAR NAME=rand_code>.jpg">
+	<img src="/images/star/jpg/STAR<TMPL_VAR NAME=rand_code>_TN.jpg"></a><br>
+<TMPL_VAR NAME=rand_title><br>
+STAR<TMPL_VAR NAME=rand_code><br>
+</TMPL_IF>
+<p>
+<table bgcolor=black><tr><td>
+<table cellpadding=4><tr><td bgcolor=white>
+<a href='?rm=star_search&search_term=T%2FS'>T-Shirts</a> | 
+<a href='?rm=star_search&search_term=action+figure'>Action Figures</a> | 
+<a href='?rm=star_search&search_term=spider-man'>Spider-Man</a> | 
+<a href='?rm=star_search&search_term=batman'>Batman</a> | 
+<a href='?rm=star_search&search_term=superman'>Superman</a>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<p>
+
+
+<form action="" method=GET>
+<input type=hidden name=rm value=star_search>
+search: <input type=text size=70 name=search_term>
+<p>
+<input type=submit value="search the STAR system">
+<!--input type=submit value="create account"-->
+</form>
+<hr>
+<TMPL_VAR NAME=results> <TMPL_VAR NAME=message> 
+<p>
+<TMPL_LOOP NAME=titles>
+	<a href="/images/star/jpg/STAR<TMPL_VAR NAME=star>.jpg">
+	<img src="/images/star/jpg/STAR<TMPL_VAR NAME=star>_TN.jpg"></a><br>
+	<TMPL_VAR NAME=title><br>STAR<TMPL_VAR NAME=star><br><TMPL_VAR NAME=price><p>
+</TMPL_LOOP>
+</center>
+
+
+</body>
+</html>

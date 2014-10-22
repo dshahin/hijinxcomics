@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>view_invoice</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+
+<h1>invoice </a></h1>
+<a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >view</a> | 
+<a href=?rm=rcv_inv&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >receive</a> | 
+<a href=?rm=osd&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >o/s/d report</a>
+<table bgcolor=white border=1>
+<tr>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=qty>q</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=itemno>itemno</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=discount>d</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=cat_id>c</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=order_type>t</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=descr>description</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=retail_price>price</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=unit_price>cost</a></th>
+	<th><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID>&order_by=inv_amt>line total</a></th>
+</tr>
+<TMPL_LOOP NAME=LINES>
+<tr align=right >
+	<td><TMPL_VAR NAME=qty></td>
+	<TMPL_IF NAME=batchno>
+	<td><a href=?order_form=<TMPL_VAR NAME=batchno>&rm=order_form&jump=1&jump_item=<TMPL_VAR NAME=linenum>&max=1><TMPL_VAR NAME=itemno></a></td>
+	<TMPL_ELSE>
+	<td><TMPL_VAR NAME=itemno></td>
+	</TMPL_IF>
+	<td><TMPL_VAR NAME=discount></td>
+	<td bgcolor=<TMPL_VAR NAME=color> ><TMPL_VAR NAME=cat_id> </td>
+	<td><TMPL_VAR NAME=order_type> </td>
+	<TMPL_IF NAME=hijinx_id>
+	<td><a href=?rm=title_info&title_id=<TMPL_VAR NAME=hijinx_id>><TMPL_VAR NAME=descr></a></td>
+	<TMPL_ELSE>
+	<td><TMPL_VAR NAME=descr>
+	<TMPL_IF NAME=isbn>
+	<a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>>isbn:<TMPL_VAR NAME=isbn></a>
+	</TMPL_IF>
+	</td>
+	</TMPL_IF>
+	<td>$<TMPL_VAR NAME=retail_price></td>
+	<td>$<TMPL_VAR NAME=unit_price></td>
+	<td>$<TMPL_VAR NAME=inv_amt></td>
+</tr>
+<TMPL_IF name=po_no>
+<tr>
+<td bgcolor=lightyellow colspan=9><b>po:</b> <TMPL_VAR NAME=po_no></td>
+</tr>
+</TMPL_IF>
+</TMPL_LOOP>
+<tr align=right><td colspan=6>total cost</td><td>$<TMPL_VAR NAME=total_cost></td><td colspan=2>$<TMPL_VAR NAME=total_retail></td>
+<tr><td colspan=9 align=center>retail dollars by category</td></tr>
+<TMPL_LOOP NAME=CATS>
+<tr align=right><td colspan=7 ><TMPL_VAR NAME=catname></td><td bgcolor=<TMPL_VAR NAME=color>><TMPL_VAR NAME=percentage>%</td><td>$<TMPL_VAR NAME=cat_retail></td></tr>
+</TMPL_LOOP>
+</table>
+</body>
+</html>

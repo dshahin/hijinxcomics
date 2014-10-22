@@ -1,0 +1,103 @@
+tml>
+<head>
+<title>books</title>
+
+
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+
+
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+<a href=/>
+</a>
+<h1>books</h1>
+<form action="" method=GET>
+<input type=hidden name=rm value=search>
+<input type=hidden name=upc_search value="search upc">
+<input type=text size=20 name=search_term onkeydown="return blockEnter(event)" >
+<input type=submit name=upc_search value="search upc">
+</form>
+<p>
+
+<form action="" method=GET>
+<input type=hidden name=rm value=search>
+<input type=text size=50 name=search_term onkeydown="return blockEnter(event)" >
+<input type=submit value="search titles">
+<input type=submit name=desc_search value="search descriptions">
+<input type=submit name=isbn_search value="search isbn">
+</form>
+<table border=0 width=600>
+<TMPL_VAR NAME=results> <TMPL_VAR NAME=message> 
+<p>
+<TMPL_LOOP NAME=titles>
+<tr>
+<td>
+
+<a href="?rm=detail&id=<TMPL_VAR NAME=id>">
+<img src="<TMPL_VAR NAME=url_small>"> </a>
+</td>
+<td>
+<b><a href="?rm=detail&id=<TMPL_VAR NAME=id>" ><TMPL_VAR NAME=title></a></b><br> 
+ dcd: <a href="https://retailer.diamondcomics.com/main/data_tools/ShoppingListAdd.asp?ItemNo=<TMPL_VAR NAME=DCD>" target="_blank"><TMPL_VAR NAME=DCD></a>  
+isbn:
+<a href="http://www.wackyhijinx.com/ISBN?rm=lookup&code=<TMPL_VAR NAME=ISBN>" target="_blank"><TMPL_VAR NAME=ISBN></a><br>
+PRICE: <b>$<TMPL_VAR NAME=PRICE></b> DISC: <b><TMPL_VAR NAME=DISCOUNT></b>
+UPC: <b><TMPL_VAR NAME=UPC_1></b>
+<!-- begin  paypal -->
+<!-- end  paypal -->
+</td>
+<tr><td colspan=2><TMPL_VAR NAME=INFO></td></tr>
+</TMPL_LOOP>
+</table>
+<hr>
+
+<h1>add book</h1>
+<form action="" method=POST>
+<input type=hidden name=rm value=new_book>
+<a name=newcust>
+<table border=0 bgcolor=#CCCCFF >
+<tr>
+	<td align=right>title</td>
+	<td><input type=text size=50 name=title ></td>
+
+</tr>
+<tr>
+	<td align=right>isbn</td>
+	<td><input type=text size=30 name=isbn ></td>
+</tr>
+<tr>
+	<td align=right>dcd</td>
+	<td><input type=text size=30 name=isbn ></td>
+</tr>
+<tr>
+	<td align=right>price</td>
+	<td><input type=text size=10 name=price >
+	</td>
+</tr>
+<tr>
+	<td align=right>upc 1</td>
+	<td><input type=text size=30 name=upc_1 ></td>
+</tr>
+<tr>
+	<td align=right>upc 2</td>
+	<td><input type=text size=30 name=upc_2 ></td>
+</tr>
+<tr>
+	<td colspan=2>
+		description:<br>
+	<textarea rows=4 cols=55 name=info></textarea>
+	</td>
+</tr>
+<tr bgcolor=#CCCCFF cellpadding=0 cellspacing=0 align=top bgcolor=white>
+	<td  align=right colspan=2>
+<input type=submit value="new book">
+</td></tr>
+</form>
+
+</table>
+
+
+</body>
+</html>

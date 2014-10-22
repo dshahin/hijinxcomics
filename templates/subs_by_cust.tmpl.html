@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>subs by customer</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<h1>Subs by customer</h1>
+<ol>
+<TMPL_LOOP NAME=customers>
+<li><a href=?rm=customer_info&id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=name></a>
+<ol>
+<TMPL_LOOP NAME=subs>
+<li><a href=?rm=title_info&title_id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=name></a>
+</TMPL_LOOP>
+</ol>
+</TMPL_LOOP>
+</ol>
+
+
+
+
+</body>
+</html>

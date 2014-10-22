@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>notes</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<TMPL_INCLUDE NAME="body.tmpl.html">
+
+<h3>customer notes</h3>
+<ol>
+<TMPL_LOOP NAME=WISHES>
+<li><a href="?rm=customer_info&id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=customer></a> <b><TMPL_VAR NAME=wish> </b>
+</TMPL_LOOP>
+</ol>
+
+</body>
+</html>
+

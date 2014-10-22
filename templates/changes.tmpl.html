@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>changes</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<table border=0>
+<h1>Customer sub changes</h1>
+<TMPL_LOOP NAME=CHANGES>
+<tr>
+<td><a href=?rm=customer_info&id=<TMPL_VAR NAME=customer>><TMPL_VAR NAME=customer_name></a></td>
+<td><TMPL_VAR NAME=action></td>
+<td><a href=?rm=title_info&title_id=<TMPL_VAR NAME=title>><TMPL_VAR NAME=title_name></a></td>
+<td><TMPL_VAR NAME=timestamp> </td>
+</tr>
+</TMPL_LOOP>
+</table>
+</body>
+</html>

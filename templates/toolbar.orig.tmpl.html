@@ -1,0 +1,46 @@
+
+<table bgcolor=black><tr><td>
+<table cellpadding=4><tr>
+<td valign=middle bgcolor=white>
+<a href=http://cpro.hijinxcomics.com/>
+<!-- <img border=0 alt="comicspro.org" src=http://www.wackyhijinx.com/images/CPROlogo1a.jpg> -->
+</a>
+</td>
+<td bgcolor=white>
+<!-- <a href=?rm=list_customers>subscribers</a> |
+<a href=?rm=book_club>book club</a> | -->
+
+<a href=?rm=customers>customers</a> |
+<a href=?rm=list_titles>comics</a> |
+<a href=?rm=books>books</a> |
+<!-- <a href=?rm=search>books</a> | -->
+<a href=?rm=orders>orders</a> |
+<a href=?rm=this_week>this week</a> |
+<!--<a href=?rm=email>email</a> | -->
+<!--[F5] <a href=?rm=last_week>last week</a> | -->
+<a href=?rm=today>today</a> | 
+<!-- <a href=?rm=subs>subscriptions</a> | -->
+<!-- [F8] <a href=?rm=wishlists>notes</a> | -->
+<!-- [F10] <a href=/cgi-bin/books/books.pl>books</a>  -->
+<!-- <a href=?rm=star_search>search</a> -->
+<!-- <a href=/handbook/>handbook</a> | -->
+<a href=?rm=logout title="logout">logout
+<!--<a href="#"onclick="showhide('session');">--><TMPL_VAR NAME=hijinx_name></a>  
+| <a href="#"onclick="showhide('tooltip');">?</a> 
+</td></tr>
+</table>
+</td></tr>
+</table>
+<div  id="session"   style="display: none; " >
+name:<TMPL_VAR NAME=hijinx_name>
+store:<TMPL_VAR NAME=store_name>
+hid:<TMPL_VAR NAME=hid>
+logged:<TMPL_VAR NAME=~logged-in> 
+perm:<TMPL_VAR NAME=perm_level> 
+sid:<TMPL_VAR NAME=_session_id>
+atime:<TMPL_VAR NAME=_session_atime>
+ctime:<TMPL_VAR NAME=_session_ctime>
+<TMPL_VAR NAME=_session_expire_list>
+ip:<TMPL_VAR NAME=_session_remote_addr> 
+</div>
+

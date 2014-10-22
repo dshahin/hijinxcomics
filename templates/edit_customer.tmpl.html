@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>hijinx</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+<form action="" method=GET>
+<input type=hidden name=rm value=add_customer>
+<TMPL_VAR NAME=message>
+<table border=0 bgcolor=lightgray >
+<tr>
+	<td align=right>name</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr><tr>
+	<td align=right>email</td>
+	<td><input type=text length=40 name=email></td>
+
+</tr><tr>
+	<td align=right>discount</td>
+	<td><input type=text length=40 name=phone></td>
+
+
+</tr>
+<tr bgcolor=#669933 cellpadding=0 cellspacing=0 align=top bgcolor=white>
+	<td  align=right colspan=2>
+<input type=submit value="add customer">
+</td></tr>
+</form>
+
+</table>
+
+</body>

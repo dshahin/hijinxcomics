@@ -1,0 +1,12 @@
+
+
+create table customer_affinity {
+       integer cust1;
+       integer cust2;
+       integer isbn;
+}
+
+create table isbn_customer {
+       integer isbn;
+       integer customer; 
+}

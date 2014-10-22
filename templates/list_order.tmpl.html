@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>list order</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+
+<h1>order items for <a href=?rm=order_form&order_form=<TMPL_VAR NAME=order_form>><TMPL_VAR NAME=order_form></a></h1>
+<a href=?rm=export_order&order_form=<TMPL_VAR NAME=order_form>>export</a> | 
+<a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>>list</a> | 
+<a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&skipped=1>skipped comics</a> |
+<a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&skipped=3>skipped books</a> 
+<table bgcolor=white border=1>
+
+<tr>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=qty&skipped=<TMPL_VAR NAME=skipped>>qty</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=itemno&skipped=<TMPL_VAR NAME=skipped>>itemno</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=discountcode&skipped=<TMPL_VAR NAME=skipped>>disc</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=category&skipped=<TMPL_VAR NAME=skipped>>cat</a></th>
+	<th width=100><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=itemdescription&skipped=<TMPL_VAR NAME=skipped>>description</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=price&skipped=<TMPL_VAR NAME=skipped>>price</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=line_total&skipped=<TMPL_VAR NAME=skipped>>line total</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=shipdate&skipped=<TMPL_VAR NAME=skipped>>ship_date</a></th>
+	<th><a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>&sortby=oicdate&skipped=<TMPL_VAR NAME=skipped>>oic_date</a></th>
+</tr>
+<TMPL_LOOP NAME=ORDERS>
+<tr align=right>
+	<td><TMPL_VAR NAME=qty></td>
+	<td><a href=?order_form=<TMPL_VAR NAME=batchno>&rm=order_form&jump=1&jump_item=<TMPL_VAR NAME=linenum>&max=1><TMPL_VAR NAME=itemno></a></td>
+	<td><TMPL_VAR NAME=discountcode></td>
+	<td><TMPL_VAR NAME=category> </td>
+	<td >
+	<TMPL_IF NAME=hijinx_id>
+	<a href="?rm=title_info&title_id=<TMPL_VAR NAME=hijinx_id>"><TMPL_VAR NAME=itemdescription></a><TMPL_ELSE><TMPL_VAR NAME=itemdescription></TMPL_IF> #<TMPL_VAR NAME=issue></td>
+	<td>$<TMPL_VAR NAME=price></td>
+	<td>$<TMPL_VAR NAME=line_total></td>
+	<td><TMPL_VAR NAME=shipdate>
+<td><a href=https://retailer.diamondcomics.com/main/data_tools/ShoppingListAdd.asp?ItemNo=<TMPL_VAR NAME=itemno> target=blank ><TMPL_VAR NAME=oicdate></a></td>
+</tr>
+</TMPL_LOOP>
+<tr align=right><td colspan=6>total retail</td><td>$<TMPL_VAR NAME=total_retail></td><td colspan=2></td>
+<tr><td colspan=9 align=center>retail dollars by category</td></tr>
+<TMPL_LOOP NAME=CATS>
+<tr align=right><td colspan=8><TMPL_VAR NAME=catname></td><td>$<TMPL_VAR NAME=cat_retail></td></tr>
+</TMPL_LOOP>
+<tr><td colspan=9 align=center>retail dollars by vendor</td></tr>
+<TMPL_LOOP NAME=VENDORS>
+<tr align=right><td colspan=8><TMPL_VAR NAME=vendorname></td><td>$<TMPL_VAR NAME=vendor_retail></td></tr>
+</TMPL_LOOP>
+</table>
+</body>
+</html>

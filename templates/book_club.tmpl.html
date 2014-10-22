@@ -1,0 +1,133 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=store_name> book club </title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip');">X</a>] book club mode tips:</b>
+<li>click on a book club member's name to enter member info mode
+<li>click on zip code to view demographic info from zip-codes.com
+<li>click on email address to compose an email to member
+</div>
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+
+<h1><TMPL_VAR NAME=store_name> book club members</h1>
+<TMPL_INCLUDE NAME="member_alphabar.tmpl.html">
+ <a href="#"onclick="showhide('new_member');">add new member</a><br>
+<div id="new_member"  style="display: none; background: white; " >
+<form action="" method=GET>
+<input type=hidden name=rm value=add_book_club_member>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name *</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr><tr>
+	<td align=right>email *</td>
+	<td><input type=text length=40 name=email></td>
+
+</tr>
+
+<tr>
+	<td align=right>address</td>
+	<td><input type=text length=40 name=address></td>
+</tr>
+<tr>
+	<td align=right>zip code *</td>
+	<td><input type=text length=40 name=zip></td>
+
+</tr><tr>
+	<td align=right>initial credit</td>
+        <td><input type=text length=40 name=credit></td>
+</tr>
+<tr  cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="add customer">
+</td></tr>
+</form>
+
+</table>
+</div>
+total members: <TMPL_VAR NAME=total_customers><br>
+total credits: $<TMPL_VAR NAME=total_credits><br>
+average credit: $<TMPL_VAR NAME=avg_credits><br>
+<p>
+<p>
+<table bgcolor=black><tr><td>
+<table border=1 cellpadding=2 bgcolor=#FFFFFF >
+<TMPL_LOOP NAME=CUSTOMERS>
+<tr> 
+	<td > 
+	   <a href="?rm=member_info&id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=name></a>
+	</td>
+	<td>
+		$<TMPL_VAR NAME=credit>
+	</td>
+	<td>
+		<a href=http://www.zipskinny.com/index.php?zip=<TMPL_VAR NAME=zip>><TMPL_VAR NAME=zip></a>
+	</td>
+	<td>
+		<a href="mailto:<TMPL_VAR NAME=email>"><TMPL_VAR NAME=email></a>
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr>
+</table>
+<br>
+</form>
+
+<h3>add new book club member</h3>
+
+<form action="" method=GET>
+<input type=hidden name=rm value=add_book_club_member>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name *</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr><tr>
+	<td align=right>email *</td>
+	<td><input type=text length=40 name=email></td>
+
+</tr>
+
+<tr>
+	<td align=right>address</td>
+	<td><input type=text length=40 name=address></td>
+</tr>
+<tr>
+	<td align=right>zip code *</td>
+	<td><input type=text length=40 name=zip></td>
+
+</tr><tr>
+	<td align=right>initial credit</td>
+        <td><input type=text length=40 name=credit></td>
+</tr>
+<tr  cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="add customer">
+</td></tr>
+</form>
+
+</table>
+
+</body>

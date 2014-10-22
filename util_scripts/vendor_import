@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+
+use HTML::Template;
+use DBI;
+my $dbh = DBI->connect( "dbi:mysql:hijinx@gal",  "hijinx", "passwerd") || die "no connect:$!\n" ;
+my $sth = $dbh->prepare("insert into vendor values(?,?)" ) || die "no select:$!\n";
+open (VENDORS, "data/vendorlist.txt")|| die "can't open vendors:$!";
+while(<VENDORS>){
+	s/"//g;
+	my ($shortname, $vcode, $vname) = split /,/;
+	$sth->execute($vcode, $vname);
+	print "$vcode, $vname\n";
+}

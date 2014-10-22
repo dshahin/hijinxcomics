@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>order form <tmpl_var name=form></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<!-- 
+maxitems:<tmpl_var name=max><br>
+limit:<tmpl_var name=limit><br>
+-->
+<p>
+<form action=? method=GET>
+<input type=hidden name=rm value=order_form>
+<input type=hidden name=order_form value=<tmpl_var name=order_form>
+<input type=hidden name=jump value=1> 
+jump to item:<input type=text name="jump_item" size=3 maxlength=4 value=<TMPL_VAR NAME=jump_item>>
+results per page:<input type=text name="max" size=3 maxlength=4 value=<TMPL_VAR NAME=max>>
+
+<input type=submit  size=4 maxlength=4  value="jump">
+</form>
+<a href=?rm=order_form&order_form=<tmpl_var name=order_form>&limit=<tmpl_var name=prev>&max=<tmpl_var name=max>>prev page</a> | 
+<a href=?rm=order_form&order_form=<tmpl_var name=order_form>&limit=<tmpl_var name=next>&max=<tmpl_var name=max>>next page</a> | 
+<a href=?rm=list_order&order_form=<tmpl_var name=order_form>>list order</a> | 
+<a href=?rm=export_order&order_form=<tmpl_var name=order_form>>export order</a> | 
+total retail:<b>$<tmpl_var name=total_retail></b>
+<table cellspacing=2 cellpadding=2 >
+<form action=? method=GET>
+<input type=hidden name=rm value=order_form>
+<input type=hidden name=order_form value=<tmpl_var name=order_form>
+<TMPL_LOOP NAME=ITEMS>
+<tr>
+	<td colspan=3>
+<hr>
+	<input type=hidden name=itemno value=<TMPL_VAR NAME=itemno>>
+	<font size=+2><b><tmpl_var name=itemdescription>  #<tmpl_var name=issue> </bold></font><br>
+	<TMPL_IF NAME=vendorname>
+	<b><TMPL_VAR NAME=vendorname> id:<TMPL_VAR NAME=vendorid></b>
+	<TMPL_ELSE>
+	 <b>id:<TMPL_VAR NAME=vendorid></b>
+	</TMPL_IF>
+	<b><TMPL_VAR NAME=category></b>
+ 	<b><TMPL_VAR NAME=itemno></b> disc:<b><tmpl_var name=discountcode></b> srp:$<b><tmpl_var name=price></b> 
+	<br>
+	O/A:<b><tmpl_var name=offeredagain></b> resolicit:<b><tmpl_var name=resolicited></b> mature:<b><tmpl_var name=mature></b> adult:<b><tmpl_var name=adult></b> 
+	caution 1:<b><tmpl_var name=caution1></b>
+	2:<b><tmpl_var name=caution2></b> 
+	3:<b><tmpl_var name=caution3></b>
+	4:<b><tmpl_var name=caution4></b>
+	<b>previews page #<tmpl_var name=pagenumber></b> <br>
+	</td>
+</tr>
+<tr bgcolor=white valign=top>
+        <TMPL_IF NAME=new>
+<td>
+<center>
+	 <a href="/images/previews/<TMPL_VAR NAME=prefix>/large/<TMPL_VAR NAME=itemno>.jpg"  onClick="return popup(this,'img_browse')"><img width=150 src="/images/previews/<TMPL_VAR NAME=prefix>/thumbs/<TMPL_VAR NAME=itemno>.jpg"></a><br>
+</center>
+</td>
+	</TMPL_IF>
+<TMPL_IF NAME=hijinx_id>
+<td valign=top bgcolor=white>
+<center>
+<img border=0 src=?rm=sparkline&title_id=<TMPL_VAR NAME=hijinx_id>> <br>
+<a href="?rm=cycles&title_id=<TMPL_VAR NAME=hijinx_id>" target=0>
+<img border=0 width=200 height=150 src=?rm=chart&title_id=<TMPL_VAR NAME=hijinx_id>&limit=6&mini=1>
+</a>
+<!-- <img src="?rm=sparkline&title_id=<TMPL_VAR NAME=hijinx_id>"> -->
+</center>
+</td>
+<td colspan=2 >
+<TMPL_ELSE>
+<td colspan=3>
+</TMPL_IF>
+<TMPL_VAR name=previews_description><br>
+<!-- <a href=/images/DEC06/large/<TMPL_VAR NAME=itemno>.jpg><img src=/images/DEC06/thumbs/<TMPL_VAR NAME=itemno>.jpg></a> -->
+<br>
+
+subs:
+		<TMPL_IF NAME=subscribers>
+		<b><font color=red size=+2><tmpl_var name=subscribers></font></b>
+		<TMPL_ELSE>
+		<b><tmpl_var name=subscribers></b>
+		</TMPL_IF>
+qty:<input type=text name="qty_<TMPL_VAR NAME=itemno>" size=3 maxlength=4 value=<TMPL_VAR NAME=qty>>
+</td>
+</tr>
+</TMPL_LOOP>
+<tr><td colspan=2><hr></td></tr>
+</table>
+<input type=hidden name=max value=<tmpl_var name=max>>
+<input type=hidden name=limit value=<tmpl_var name=next>>
+<input type=submit  size=4 maxlength=4 value="save and continue ->">
+</form>
+</form>
+</body>
+</html>

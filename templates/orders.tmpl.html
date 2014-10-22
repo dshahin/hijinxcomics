@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>orders</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<h1>order files</h1>
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b> mode:</b><br>
+</div>
+<a href=?rm=oic>OIC tool</a>
+
+<h2>invoices</h2>
+<a href=https://retailer.diamondcomics.com/main/MyAccount/InvSelect.asp>download Diamond invoices</a><br>
+<form action="" method=POST ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="import_invoice">
+ <INPUT TYPE="file" NAME="invoice" >
+ <INPUT TYPE="submit" NAME="Submit" VALUE="import invoice">
+</form>
+<table border=0 cellspacing=2>
+<TMPL_LOOP NAME=INVOICES>
+<tr bgcolor=white>
+<td><a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=invoice_id>><TMPL_VAR NAME=date></a></td>
+<td><a href=?rm=rcv_inv&invoice_id=<TMPL_VAR NAME=invoice_id>>receive</a></td>
+<td><a href=?rm=osd&invoice_id=<TMPL_VAR NAME=invoice_id>>o/s/d</a></td>
+<td><a href=?rm=gen_web&invoice_id=<TMPL_VAR NAME=invoice_id>>Add to Website</a></td>
+<td><TMPL_VAR NAME=dcd_cust_id></td><td align=right>$<TMPL_VAR NAME=inv_total></td>
+<td><a href=?rm=delete_invoice&invoice_id=<TMPL_VAR NAME=invoice_id> onClick="return confirm('really delete <TMPL_VAR NAME=date> id: <TMPL_VAR NAME=invoice_id> from invoices?')">X</a></td>
+</tr>
+</TMPL_LOOP>
+
+</table>
+<form action="" method=GET>
+<input type=hidden name=rm value=orders>
+<input type=hidden name=order_limit value="<TMPL_VAR NAME=order_limit>">
+show <input type=text name=inv_limit size=3 value="<TMPL_VAR NAME=inv_limit>" >
+<input type=submit name="add_issue_cycle" size=4 maxlength=4 value="invoices">
+</form>
+
+
+
+<h2>initial order forms</h2>
+<ul>
+<TMPL_LOOP NAME=ORDER_FORMS>
+<li><a href=?rm=order_form&order_form=<TMPL_VAR NAME=order_form>><TMPL_VAR NAME=order_form></a> | 
+<a href=?rm=list_order&order_form=<TMPL_VAR NAME=order_form>>list</a> | 
+<a href=?rm=export_order&order_form=<TMPL_VAR NAME=order_form>>export</a> 
+
+</TMPL_LOOP>
+</ul>
+<form action="" method=GET>
+<input type=hidden name=rm value=orders>
+<input type=hidden name=inv_limit value="<TMPL_VAR NAME=inv_limit>">
+show <input type=text name=order_limit size=3 value="<TMPL_VAR NAME=order_limit>" >
+<input type=submit name="add_issue_cycle" size=4 maxlength=4 value="order forms">
+</form>
+
+</body>
+</html>

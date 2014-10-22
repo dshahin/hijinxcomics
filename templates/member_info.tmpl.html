@@ -1,0 +1,169 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=login> info</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip');">X</a>] this week tips:</b>
+</div>
+<p>
+<h2><a href=?rm=member_info&id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=login></a></h2>
+
+
+<form action="" method=POST>
+<input type=hidden name=rm value=update_member>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name</td>
+	<td><input type=text size=30 name=name value="<TMPL_VAR NAME=login>"></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text size=30 name=phone value="<TMPL_VAR NAME=PHONE>"></td>
+
+</tr><tr>
+	<td align=right>email</td>
+	<td><input type=text size=30 name=email value="<TMPL_VAR NAME=EMAIL>"></td>
+
+</tr>
+
+<tr>
+	<td align=right>address</td>
+	<td><input type=text size=30 name=address value="<TMPL_VAR NAME=ADDRESS>"></td>
+</tr>
+<tr>
+	<td align=right>zip code</td>
+	<td><input type=text size=30 name=zip value="<TMPL_VAR NAME=ZIP>"></td>
+</tr>
+<tr  cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="update info">
+</td></tr>
+</form>
+
+</table>
+<p>
+<a href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_ship-now&first_name=<TMPL_VAR NAME=login>&last_name=<TMPL_VAR NAME=login>&address1=<TMPL_VAR NAME=address>&address2=<TMPL_VAR NAME=address>ip=<TMPL_VAR NAME=zip>">shipping label</a>
+<p>
+ <a href="?rm=delete_member&id=<TMPL_VAR NAME=id>" onClick="return confirm('really delete <TMPL_VAR NAME=login> from book club?')">delete membership</a> <TMPL_VAR NAME=subs> <br>
+<div  id="tooltip2"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip2');">X</a>] this week tips:</b>
+</div>
+<table border=0>
+<tr>
+<td>
+Total book club credit:<b>$<TMPL_VAR NAME=credit> </b> 
+</td>
+<td>
+<form action="" method=POST>
+<input type=hidden name=rm value=add_credit>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<input type=text size=6 name=amount >
+<input type=submit value="add credit">
+</form>
+</td>
+<td>
+<form action="" method=POST>
+<input type=hidden name=rm value=use_credit>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<input type=text size=6 name=amount >
+<input type=submit value="use credit">
+<a href="#"onclick="showhide('tooltip2');">?</a>
+</form>
+</td>
+</tr>
+</table>
+<div  id="tooltip3"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip3');">X</a>] this week tips:</b>
+</div>
+<form name=search action="" method=POST>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<input type=hidden name=rm value=club_search>
+<input type=hidden name=upc_search value="search upc">
+<input type=text size=20 name=upc  >
+<input type=submit value="upc/isbn search">
+<a href="#"onclick="showhide('tooltip3');">?</a>
+</form>
+<!-- length:<TMPL_VAR NAME=length> -->
+<form name=buy action="" method=POST>
+<input type=hidden name=rm value=buy_book>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<div  id="tooltip4"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip4');">X</a>] :</b>
+</div>
+<table border=0>
+<td>title</td><td>price</td><td >%</td><td colspan=2>credit used</td>
+</tr>
+<tr>
+<td>
+<input type=text size=40 name=book value="<TMPL_VAR NAME=book_title>" >
+</td>
+<td>
+<input type=text size=6 name=price  value="<TMPL_VAR NAME=book_price>">
+</td>
+<td>
+<input type=text size=2 name=rebate value="<TMPL_VAR NAME=default_credit>" >
+</td>
+<td>
+- <input type=text size=6 name=credit value="0" >
+</td>
+<td>
+<input type=hidden name=isbn value=<TMPL_VAR NAME=isbn>>
+<input type=submit name=submit_button value="buy book">
+<a href="#"onclick="showhide('tooltip4');">?</a>
+</td>
+</tr>
+</table>
+<TMPL_IF NAME=img_url>
+<img src=<TMPL_VAR NAME=img_url> border=0></b><br>
+</TMPL_IF>
+<TMPL_IF NAME=book_title>
+<b><TMPL_VAR NAME=book_title></b><br>
+<script language="JavaScript"> document.buy.submit_button.focus(); </script>
+<TMPL_ELSE>
+<script language="JavaScript"> document.search.upc.focus(); </script>
+</TMPL_IF>
+<TMPL_IF NAME=upc>
+<b>UPC: <TMPL_VAR NAME=upc></b><br>
+</TMPL_IF>
+<TMPL_IF NAME=isbn>
+<b>ISBN: <TMPL_VAR NAME=isbn></b><br>
+</TMPL_IF>
+
+</form>
+<p>
+<h3>history (last 100)</h3>
+<a href=?rm=member_info&id=<TMPL_VAR NAME=id>&limit=10000>show complete history</a>
+<form action="" method=GET>
+<input type=hidden name=rm value=note>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+<input type=submit  size=4 maxlength=4 value=" add note ">
+<input type=text name="note" size=50 maxlength=50 >
+</form>
+<ol>
+<TMPL_LOOP NAME=notes>
+<li><TMPL_VAR NAME=note>  [ <a href="?rm=delete_note&note_id=<TMPL_VAR NAME=note_id>&id=<TMPL_VAR NAME=id>&isbn=<TMPL_VAR NAME=isbn>" >delete</a>
+<TMPL_IF NAME=isbn>| <a href=https://retailer.diamondcomics.com/main/data_tools/StockLookup.asp?QueryItem=<TMPL_VAR NAME=isbn>>reorder</a> 
+| <a href=/isbn?isbn=<TMPL_VAR NAME=isbn>&size=2>cover</a> 
+| <a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>>info</a>
+</TMPL_IF>]
+</TMPL_LOOP>
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+
+

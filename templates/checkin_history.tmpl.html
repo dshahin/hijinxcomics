@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>customer: <TMPL_VAR NAME=login></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<h1><TMPL_VAR NAME=login></h1>
+<!-- <IMG SRC="/images/customers/<TMPL_VAR NAME=id>.jpg"><br> -->
+
+<TMPL_VAR NAME=login>
+
+currently subscribes to <b><TMPL_VAR NAME=number_of_subs></b> titles <font color=yellow><b><TMPL_VAR NAME=number_of_subs_this_week></font></b> this week .<br>
+last came in or called:<font color=yellow> <TMPL_VAR NAME=last_checkin> </font>
+[<a href="?rm=checkin&id=<TMPL_VAR NAME=id>"> check in </a> | <a href="/cgi-bin.pl?rm=checkin_history&id=<TMPL_VAR NAME=id>">history</a> ]
+<p>
+
+<table bgcolor=black><tr><td>
+<table cellpadding=4><tr><td bgcolor=white>
+[ <a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">edit subscriptions</a> |
+| <a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">edit info</a> ]
+</td></tr></table>
+</td></tr></table>
+
+<h3>subscriptions</h3>
+<ol>
+<TMPL_LOOP NAME=TITLES>
+<li><TMPL_VAR NAME=title><!-- <TMPL_VAR NAME=id> -->
+</TMPL_LOOP>
+</ol>
+
+<h3>wishlist</h3>
+<form action="" method=GET>
+<input type=hidden name=rm value=wish>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+<input type=submit  size=4 maxlength=4 value=" wish ">
+<input type=text name="wish" size=50 maxlength=50 >
+</form>
+<ol>
+<TMPL_LOOP NAME=WISHES>
+<li><TMPL_VAR NAME=wish>  [<a href="?rm=delete_wish&wish_id=<TMPL_VAR NAME=wish_id>&id=<TMPL_VAR NAME=id>" >delete</a>]
+</TMPL_LOOP>
+</ol>
+<!--
+<ul>
+<li><font color=yellow>searching or on order</font>
+<li><font color=red>could not locate</font>
+<li><font color=green>awaiting purchase</font>
+<li><font color=blue>purchased</font>
+<li>no action taken
+</ul>
+-->
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

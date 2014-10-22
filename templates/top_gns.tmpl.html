@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>bestselling books</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<h1>Bestselling Books</h1>
+<h2><TMPL_IF NAME=MONTH><TMPL_VAR NAME=MONTH> / </TMPL_IF><TMPL_IF NAME=YEAR>20<TMPL_VAR NAME=YEAR></TMPL_IF></h2>
+<form action=?><input type=hidden name=rm value=top_gns>show:<input type=text name=show  size=5 align=right value="<TMPL_VAR NAME=SHOW>">
+<select name=month>
+<option value="" selected>--</option>
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<select name=year>
+<option value="" selected>--</option>
+<option value="05">2005</option>
+<option value="06">2006</option>
+<option value="07">2007</option>
+<option value="08">2008</option>
+<option value="09">2009</option>
+<option value="10">2010</option>
+</select
+ <input type=submit>
+</form>
+<ol>
+<TMPL_LOOP NAME=BOOKS>
+<li><TMPL_VAR NAME=count> - <a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR NAME=title></a> $<TMPL_VAR NAME=price> 
+ <a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');><TMPL_VAR NAME=isbn></a> 
+min:<TMPL_VAR NAME=min>
+</TMPL_LOOP>
+</ol>
+</body>
+</html>

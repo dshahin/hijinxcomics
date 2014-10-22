@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>statistics</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+
+<h1>titles by number of subscribers</h1>
+total titles:<TMPL_VAR NAME=total_titles><p>
+<table bgcolor=black><tr><td>
+<table cellpadding=2><tr><td bgcolor=white>
+<center>[ <a href=?rm=add_title>add title</a> | 
+<a href=?rm=list_titles>alpha sort</a> ]</center>
+</td></tr></table>
+</td></tr></table>
+
+<p>
+
+<ol>
+<TMPL_LOOP NAME=TITLES>
+		<li>
+		<b><TMPL_VAR NAME=count></b> <TMPL_VAR NAME=name>
+		[ <a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a> |
+		<a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>">cycles</a> |
+		<a href="?rm=archive&title_id=<TMPL_VAR NAME=id>">archive</a> |
+	   <a href="?rm=delete_title&title_id=<TMPL_VAR NAME=id>">delete</a> ]
+</TMPL_LOOP>
+</ol>
+</table>
+</tr></td></table>
+<br>
+</form>
+
+
+</body>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>single issue cycle worksheet <TMPL_VAR NAME=WEEK_NUM></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<form action="" method=GET name=upc_search>
+	<input type=text size=20 name=upc value=<TMPL_VAR NAME=UPC>>
+<input type=hidden name=rm value=search_comic_upc>
+<input type=submit value="search upc"> 
+<script language="JavaScript"> document.upc_search.upc.select(); </script>
+</form>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<table border=0>
+<TMPL_LOOP NAME=BOOKS>
+<tr><td>
+	 <a href="/images/<TMPL_VAR NAME=prefix>/large/<TMPL_VAR NAME=DCD>.jpg"><img src="/images/previews/<TMPL_VAR NAME=prefix>/thumbs/<TMPL_VAR NAME=DCD>.jpg"></a><br>
+</td></tr>
+<tr>
+<form action="" method=GET name=single_cycle>
+<input type=hidden name=rm value=update_single_cycle>
+
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+
+<input type=hidden name=issue value=<TMPL_VAR NAME=issue>>
+<TMPL_IF NAME=this> 
+<input type=hidden name=new value=1>
+<TMPL_ELSE>
+<input type=hidden name=new value=0>
+</TMPL_IF>
+    <td><font size=-3><a href=?rm=cycles&title_id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=title></a></font><TMPL_IF NAME=this> (NEW)</TMPL_IF></td>
+     <td align=left>issue #<TMPL_VAR NAME=issue><input id="qty" type=text size=2 name=qty value=<TMPL_VAR NAME=week_2>></td>
+     <td align=left><TMPL_VAR NAME=DCD></td>
+<td><input type=submit value="update cycle"> </td>
+<TMPL_IF NAME=week_2><script language="JavaScript"> document.single_cycle.qty.select(); </script></TMPL_IF>
+</form>
+</tr>
+</TMPL_LOOP>
+</table>
+<hr>
+</body>
+</html>

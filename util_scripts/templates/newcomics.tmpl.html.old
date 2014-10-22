@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>New this week at Hijinx Comics</TITLE>
+<STYLE TYPE="text/css">
+A:link {text-decoration:underline}
+A:active {text-decoration:none}
+A:visited {text-decoration:none}
+</STYLE>
+
+</HEAD>
+<BODY topmargin="0" marginwidth="10" marginheight="10" BGCOLOR="#FFFFFF" LINK="#666699" VLINK="#9999CC" ALINK="#FFFFFF"
+ BGCOLOR="#FFFFFF">
+
+
+<TABLE BGCOLOR="#000000" WIDTH=100% CELLPADDING=1 CELLSPACING=2 BORDER=0>
+<TR>
+<TD>
+
+	<TABLE BGCOLOR="#FFFFFF" WIDTH=100% CELLPADDING=2 CELLSPACING=2 BORDER=0>
+	<TMPL_LOOP NAME=THIS_WEEK_COMICS>
+		<TR> <TD WIDTH=80%><A NAME="<TMPL_VAR NAME=CODE>"><b><TMPL_VAR NAME=TITLE></b></A> </TD>  
+		<TD bgcolor='gray'><center><b><TMPL_VAR NAME=PRICE></b></center> </TD> </TR>
+		<TR><TD colspan=2><TMPL_VAR NAME=DESC></TD></TR>
+       <TR>
+       <TD BGCOLOR="#666699" colspan=2><IMG SRC="/images/dot.gif" HEIGHT=1 BORDER=0></TD>
+       </TR>
+	</TMPL_LOOP>
+		</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+</BODY>
+</HTML>

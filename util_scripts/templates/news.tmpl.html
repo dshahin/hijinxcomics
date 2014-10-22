@@ -1,0 +1,79 @@
+
+<!--************************************ BEGIN NEWS ************************************-->
+
+<TABLE BGCOLOR="#000000" WIDTH=100% CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR>
+<TD>
+
+<TABLE BGCOLOR="#FFFFFF" WIDTH=100% CELLPADDING=0 CELLSPACING=0 BORDER=0>
+
+
+       <TR>
+        <TD COLSPAN=2>
+        
+<!--*********************************** TITLE ****************************************-->
+
+<table border="0" bgcolor="#CCCCCC" cellspacing="0" cellpadding="3" width="100%">
+ <tr>
+ 
+  <td bgcolor="#CCCCCC">
+   <font face="verdana, arial, helvetica" size="2" color="#000000">
+   <b>Comic Book News Feeds</b> (updated: <TMPL_VAR NAME=FEED_DATE>)  <a href=/news.html>view all feeds</a>
+   </font>
+  </td>
+  
+  <td align="right" width="1%" valign="baseline" bgcolor="#666699">
+   &nbsp;
+  </td>
+  
+  <td align="right" width="1%" valign="baseline" bgcolor="#666699">
+   &nbsp;
+  </td>
+  
+ </tr>
+</table>
+
+<!--*********************************** END TITLE ****************************************-->
+
+        </TD>
+       </TR>
+
+       
+       <TR><TD COLSPAN=2>&nbsp</TD></TR>       
+       
+        <TD COLSPAN=2>
+        
+          
+          <TABLE CELLPADDING=3 CELLSPACING=0 BORDER=0>
+          
+
+          <TR>
+          <TD VALIGN=TOP><FONT FACE="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
+	<UL>
+	 <TMPL_LOOP NAME=FEEDS>
+		<LI><A HREF="<TMPL_VAR NAME=LINK>" ALT="<TMPL_VAR NAME=DATE>"><TMPL_VAR NAME=TITLE></A>[<TMPL_VAR NAME=SITE>]<br>
+		<TMPL_VAR NAME=DESC>
+          </TMPL_LOOP>
+	</UL>
+
+	</FONT>
+          </TD>
+          </TR>
+          <TR>
+          <TD ALIGN=RIGHT COLSPAN=3>
+          <FONT COLOR="#000000" SIZE="-1" FACE="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><IMG SRC="arrow_blues.gif"> 
+          <!-- <A HREF="oldnews.html">News Archive</A></FONT></A> -->
+          </TD>
+          </TR>
+          </TABLE>
+
+  
+        </TD>
+       </TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+<!--************************************ END NEWS ************************************-->

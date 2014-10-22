@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>outstanding book reorders</title>
+
+
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+
+
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+[ <a href=?rm=book_reorders>suggested book reorders</a> | 
+<a href=?rm=os_book_reorders>outstanding book reorders</a> | 
+<a href=?rm=top_gns>bestselling books</a> 
+]<br>
+
+<!-- 
+  -->
+<h1>books</h1>
+<TMPL_IF name=results>
+</TMPL_IF>
+<TMPL_IF name=isbn>
+<a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');>info/reorder</a>
+<form name=book action="" method=POST>
+</form>
+<script language="JavaScript"> document.book.in_stock.focus(); </script>
+</table>
+<h3>sales history</h3>
+<ol>
+<TMPL_LOOP NAME=history>
+<li><a href=?rm=member_info&id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=name></a> <TMPL_VAR NAME=note>
+</TMPL_LOOP>
+</ol>
+<TMPL_ELSE>
+</TMPL_IF>
+<h3>outstanding reorders retail total:$<TMPL_VAR NAME=retail_total></h3>
+<TMPL_LOOP name=books>
+
+<br><a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR name=title></a>
+
+$<TMPL_VAR NAME=price> <a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');><TMPL_VAR NAME=dcd></a><br>
+
+<form action="" method=POST  ENCTYPE="multipart/form-data">
+<a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');>info</a> 
+<input type="hidden" name="rm" value="edit_book_results">
+<input type="hidden" name="bm" value="os">
+<input type="hidden" name="search_term" value="<TMPL_VAR NAME=search_term>">
+<input type="hidden" name="id" value="<TMPL_VAR NAME=id>">
+sold: <TMPL_VAR NAME=sold> 
+min: <input type=text size=3 name="min_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=min>" >
+in stock: <input type=text size=3 name="in_stock_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=in_stock>" >
+on order: <input type=text size=3 name="on_order_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=on_order>" ><br>
+</TMPL_LOOP>
+<input type=submit value="update">
+</form>
+
+
+</body>
+</html>

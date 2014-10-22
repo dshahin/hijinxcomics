@@ -1,0 +1,14 @@
+[get_titles]
+select 	id,
+	name
+from	titles
+order by name
+
+[get_sales]
+select 	issue,
+	(rcv_qty + reorder - week_2) as sold
+from 	cycles
+where 	title_id = ?
+and	(rcv_qty + reorder - week_2)  > 0
+order by	issue asc
+

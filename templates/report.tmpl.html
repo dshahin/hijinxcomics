@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Reports:<TMPL_VAR NAME=report_title></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html"><p>
+
+<h2>report</h2>
+<h3><TMPL_VAR NAME=report_title></h3>
+
+<ol>
+<TMPL_LOOP NAME=REPORT>
+<li><a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR NAME=TITLE> - <TMPL_VAR NAME=isbn></a> in_stk:<TMPL_VAR NAME=in_stock>
+min:<TMPL_VAR NAME=min> on order:<TMPL_VAR NAME=on_order> sold:<TMPL_IF NAME=sold><TMPL_VAR NAME=sold></TMPL_IF>
+</li>
+</TMPL_LOOP>
+</ol>
+
+</body>

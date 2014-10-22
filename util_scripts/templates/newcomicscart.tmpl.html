@@ -1,0 +1,146 @@
+<HEAD>
+<TITLE>Hijinx Comics: New This Week</TITLE>
+<link href="styles.css" rel="stylesheet">
+</HEAD>
+<BODY BGCOLOR="#FDE7B1" TOPMARGIN="5" LEFTMARGIN="0">
+<DIV ALIGN="CENTER">
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD WIDTH=5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+		<TD WIDTH="162" VALIGN="TOP" BGCOLOR="#FEB500"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD><IMG WIDTH="162" HEIGHT="130" SRC="images/panels_01.gif"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><IMG SRC="images/banner_menu.gif"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP" ALIGN="RIGHT"><DIV id="button"><UL><LI><A HREF="maps.html">MAPS</A></LI>
+								<LI><A HREF="mailto:dan@hijinxcomics.com">E-MAIL</A></LI>
+								<LI><A HREF="history.html">HISTORY</A></LI>
+								<LI><A HREF="software.html">SOFTWARE</A></LI>
+								<LI><A HREF="http://www.quicktopic.com/19/H/Qn3qpcRiF8nX">FEEDBACK</A></LI>
+								<LI><A HREF="bookclub.html">BOOKCLUB</A></LI></UL></DIV></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="398" VALIGN="TOP" BGCOLOR="#FFFFFF"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD><A HREF="index.html"><IMG BORDER="0" HEIGHT="130" WIDTH="398" SRC="images/logo.gif"></A></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" CLASS="directions"><STRONG>Willow Glen:</STRONG> 2050 Lincoln Ave. San Jose, CA. 95125
+					(408) 266-1103<BR>hours: 11-7 | wednesday 12-8 | sunday 11-5 | <A HREF="maps.html">map</A></FONT></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="1" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" CLASS="directions"><STRONG>Downtown:</STRONG> 330 South 3rd St Suite C San Jose, CA. 95112
+					(408) 292-9133<BR>hours: 11-8 | wednesday 12-9 | sat-sun 12-7 | <A HREF="maps.html">map</A></FONT></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="6" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="6"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><IMG WIDTH="398" HEIGHT="16" SRC="images/head_newcomics.gif"></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><TABLE BORDER="0" WIDTH="100%" CELLSPACING="3" CELLPADDING="0">
+<TMPL_LOOP NAME=THIS_WEEK_COMICS>
+       	<TR> <TD WIDTH=80%><A NAME="<TMPL_VAR NAME=CODE>"><b><TMPL_VAR NAME=TITLE></b></A> </TD>  
+		<TD BGCOLOR="#FEB500"><center><b>$<TMPL_VAR NAME=PRICE></b>
+			<br>
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="image" src="/images/addcart.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+	</center> </TD> </TR>
+		<TR><TD colspan=2><TMPL_VAR NAME=DESC>
+<!-- begin paypal -->				
+<center>
+<!-- <input type="hidden" name="add" value="1"> -->
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="page_style" value="hijinx">
+<input type="hidden" name="business" value="dan@hijinxcomics.com">
+<input type="hidden" name="item_name" value="<TMPL_VAR NAME=TITLE>">
+<input type="hidden" name="item_number" value="<TMPL_VAR NAME=CODE>">
+<input type="hidden" name="amount" value="<TMPL_VAR NAME=PRICE>">
+<input type="hidden" name="return" value="http://www.hijinxcomics.com/newcomicscart.html">
+<input type="hidden" name="cancel_return" value="http://www.hijinxcomics.com/newcomicscart.html">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+</form>
+</center>
+<!-- end  paypal -->				
+
+
+
+
+
+
+
+</TD></TR>
+       <TR>
+       <TD colspan=2><IMG SRC="images/spacer.gif" HEIGHT=2 BORDER=0></TD>
+       </TR>
+       <TR>
+       <TD colspan=2><IMG SRC="images/spacer.gif" HEIGHT=2 BORDER=0></TD>
+       </TR>       
+       <TR>
+       <TD BGCOLOR="#000000" colspan=2><IMG SRC="images/spacer.gif" HEIGHT=2 BORDER=0></TD>
+       </TR>  
+</TMPL_LOOP>
+		</TABLE></TD>
+							</TR>
+						</TABLE></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="162" ROWSPAN="2" VALIGN="TOP" BGCOLOR="#B3A37D" BACKGROUND="images/stripe_02.gif"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD><IMG WIDTH="162" HEIGHT="130" SRC="images/panels_02.gif"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="3"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+	</TR>
+	<TR>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+		<TD WIDTH="162" VALIGN="BOTTOM" BGCOLOR="#FEB500"><IMG SRC="images/spacer.gif"></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="398" BGCOLOR="#FFFFFF" VALIGN="BOTTOM"><IMG WIDTH="398" HEIGHT="34" SRC="images/squares_bottom.gif"></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+	</TR>
+</TABLE>
+</DIV>
+</BODY>

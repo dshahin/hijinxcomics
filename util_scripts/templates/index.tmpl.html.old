@@ -1,0 +1,439 @@
+
+<TITLE>Hijinx Comics - the oldest comic book store in San Jose</TITLE>
+<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-802705-2";
+urchinTracker();
+</script>
+<link href="styles.css" rel="stylesheet">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="openid.server" href="http://openid.claimid.com/server" />
+<link rel="openid.delegate" href="http://openid.claimid.com/hijinx" />
+<meta name="verify-v1" content="hoAFI0QtectuOlwk9g5ZyKO/Heqhkl4jsfzzxSR5QBA=" />
+
+</HEAD>
+<BODY BGCOLOR="#FDE7B1" TOPMARGIN="5" LEFTMARGIN="0">
+<DIV ALIGN="CENTER">
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD WIDTH=5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+		<TD WIDTH="162" VALIGN="TOP" BGCOLOR="#FEB500"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD BGCOLOR="#FDE7B1" align="right"><IMG WIDTH="162" HEIGHT="130" SRC="images/panels_04.gif"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" align="right"><IMG SRC="images/banner_menu.gif"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" VALIGN="TOP" ALIGN="RIGHT"><DIV id="button"><UL><LI><A HREF="maps.html">MAPS</A></LI>
+								<LI><A HREF="mailto:dan@hijinxcomics.com">E-MAIL</A></LI>
+								<LI><A HREF="http://www.comicbookshelf.com">SHOP ONLINE</A></LI>
+								<LI><A HREF="history.html">HISTORY</A></LI>
+								<!-- <LI><A HREF="storepics.html">PICTURES</A></LI> -->
+								<LI><A HREF="software.html">SOFTWARE</A></LI>
+								<LI><A HREF="bookclub.html">BOOKCLUB</A></LI>
+								<LI><A HREF="https://www.hijinxcomics.com/sub">SUBSCRIPTIONS</A></LI>
+								</UL></DIV></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="1" BGCOLOR="FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="1"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" align="right"><IMG SRC="images/banner_newcomics.gif"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><!--NEW RELEASES HERE--><FONT SIZE="-2"> <TMPL_VAR NAME=DATE></FONT><br><br>
+					<DIV CLASS="shipping"><center><U>COMICS</U></center><BR>
+	<TMPL_LOOP NAME=THIS_WEEK_COMICS>
+		<A CLASS="shipping" HREF="newcomics.html#<TMPL_VAR NAME=CODE>"><TMPL_VAR NAME=ISSUE></A><BR>
+	 </TMPL_LOOP>
+<BR><BR><center><U>GRAPHIC NOVELS</U></center><BR>
+      <TMPL_LOOP NAME=THIS_WEEK_BOOKS>
+<A CLASS="shipping" HREF='newcomics.html#<TMPL_VAR NAME=CODE>' ><TMPL_VAR NAME=ISSUE></A><BR>
+	</TMPL_LOOP>
+<p>
+<p>
+
+
+							</TR>
+						</TABLE></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="2"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+				</TR>
+				<TR>
+					<TD><IMG SRC="images/banner_artist.gif"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="3"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BACKGROUND="images/stripe_01.gif">
+							<a href=http://www.comicbookshelf.com/?rm=auth_search&id=744><IMG VSPACE="12" HEIGHT="154" BORDER="0" SRC="images/Toth.jpg"></a></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="2"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+				</TR>
+				<TR>
+					<TD><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6">
+							<TR>
+								<TD CLASS="directions"><STRONG><a href=http://www.comicbookshelf.com/?rm=auth_search&id=744>Alex Toth</a></STRONG><br>
+<p>
+
+Excerpted from his <a href=http://en.wikipedia.org/wiki/Alex_Toth>Wikipedia entry</a>:
+<p>
+<i>
+Toth’s contributions to the comics medium are not widely known among casual fans. He did much of his comics work outside the current mainstream of superhero comics, concentrating instead on such subjects as hot rod racing, romance, horror, and action-adventure. His stint on Disney’s Zorro is highly regarded and has been reprinted in trade paperback form several times and there are two volumes of The Alex Toth Reader published by Pure Imagination which focuses on his work for Standard and Western publishing, but otherwise the bulk of his shorter stories can be difficult to locate. Nonetheless, he is widely regarded as an “artist’s artist” and is often lumped among such greats as Will Eisner and Jack Kirby as one of the undisputed masters of the sequential storytelling medium.
+</i>
+<p>
+Make sure to check out his featured section of graphic novels at Hijinx in our Fiction and Literature section.
+
+ </TD>
+									</TR>
+									</TABLE></TD>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="2"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+				</TR>
+				<TR>
+					<TD><IMG SRC="images/banner_customer.gif"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="3"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BACKGROUND="images/stripe_01.gif">
+							<IMG VSPACE="12" BORDER="0" SRC="images/featured_customer.jpg">
+					</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="2"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6">
+							<TR>
+								<TD CLASS="directions"><center><STRONG>Children of the Atom</STRONG></center>
+								<BR>
+Maybe it's something in the water, but Hijinx customers have started developing strange new powers and abilities.  Gaze in awe at the Levinson brothers, who will be starting soon at an upscale prep school for gifted youngsters in the Westchester NY area.  
+<p>
+<center>
+<a href=/maps/cbia/>
+<img src=/images/comicshopmap_link150x88.png border=0>
+</a>
+<p>
+<p>
+<img border=0 src=/images/hijinx25_mini.png>
+</center>
+</TD>
+									</TR>
+									</TABLE></TD>
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="398" VALIGN="TOP" BGCOLOR="#FFFFFF"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD BGCOLOR="#FDE7B1">
+					<center>
+					<A HREF="/"><IMG BORDER="0" HEIGHT="130" WIDTH="398" SRC="images/HijinxLogo.png"></A>
+					</center>
+					</TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" CLASS="directions">
+						<center>
+						2050 Lincoln Ave. San Jose, CA. 95125 (408) 266-1103
+					<BR>hours: 11-7 | <b>wednesday 11-8</b> |  weekends 11-6 | <A HREF="maps.html">map</A>
+						</center>
+					</FONT></TD>
+				</TR>
+
+
+
+
+
+
+
+				<TR>
+					<TD HEIGHT="6" BGCOLOR="#FDE7B1"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="6"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><IMG WIDTH="398" HEIGHT="16" SRC="images/head_propaganda.gif"></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><FONT COLOR="#665533"><DIV ALIGN="JUSTIFY">
+          <STRONG>Hijinx Comics: Voted Best Comic Book Store in Silicon Valley 2007, 2008 and 2009.</STRONG></FONT><br>
+<table border=0>
+<tr>
+<td>
+          At <STRONG>Hijinx</STRONG> comics get priority. Not overpriced "hot" back issues from last month, 
+		but quality comics for <STRONG>readers</STRONG>
+		of all ages and tastes. 
+		You'll find an extensive array of comic books and graphic novels and that our friendly staff is 
+		well-versed in all types of comics, with a fondness for self-published and independent titles.
+</td>
+<td>
+<center>
+<img src=/images/waverc08.jpg>
+</center>
+</td>
+</tr>
+</table>
+<center>
+  <form action="http://www.hijinxcomics.com/list/index.cgi" method="get">
+    <input type="hidden" name="list" value="hijinx" />
+	  <input type="hidden" name="f" value="subscribe" />
+	    <input type="text" name="email" value="email address" size="16" onfocus="this.value='';" />
+  <input type="submit" value="Join our spam-free mailing list" />
+		    </form>
+
+</center>
+			 
+
+
+
+<!-- 
+<center>
+  <form action="http://www.hijinxcomics.com/cgi-bin/dada/mail.cgi" method="get">
+  <input type="hidden" name="list" value="hijinx" />
+  <input type="hidden" name="f" value="subscribe" />
+  <input type="text" name="email" value="email address" size="16" onfocus="this.value='';" />
+  <input type="submit" value="Join our spam-free mailing list" />
+  </form>
+<p>
+</center>
+-->
+ 
+
+
+</DIV></TD>
+							</TR>
+						</TABLE></TD>
+				</TR>
+
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><IMG WIDTH="398" HEIGHT="16" SRC="images/head_events.gif"></TD>
+				</TR>
+				<!-- 
+				<TR>
+					<TD>
+						<center><h1>The Hijinx Heroes Art Contest</h1></center>
+						<center><h2>Enter by July 25th to win!</h2></center>
+						<center><img border=0 src=/images/drawingboard.gif></center>
+			Draw your favorite comic book character and enter to win valuable prizes from Hijinx.  Just submit your finished drawing of your favorite comic book character at Hijinx in ink on plain old paper and be eligible to win in either the kids (under 12), teen (under 20) or adult category.  Prizes will be announced soon, so sharpen up those pencils and get ready for the awards party at Hijinx!  All entries will be on display at Hijinx, so keep those drawings fit for all ages!
+
+			</TD>
+			</TR>
+			-->
+				<TR>
+					<TD>
+						<center><h1>Now buying used books</h1></center>
+						<center><h2>Graphic Novels and General Books</h2></center>
+						<center><img border=0 src=/images/usedbooksign.png></center>
+					<p>	
+				That's right, Hijinx is always buying used Graphic Novels, comic strip collections as well as general books (yes, the kind without pictures!) so bring down a stack to sell or trade for new comics and books.  Fiction, non-fiction, biographies, fantasy, horror, hardcover or paperback, technical books and more,  we are buying it all!
+					</TD>
+				</TR>
+
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><DIV ALIGN="JUSTIFY"><center></center>
+
+<table border=0>
+</table>
+
+								</TD>
+							</TR>
+						</TABLE></TD>
+				</TR>
+
+
+
+
+
+		 <TR>
+			 <TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+					<TR>
+				</TD> 
+	</TR> 
+
+<TR>
+
+<!--
+<center>
+<strong>Join the Hijinx Book Club!</strong>
+</center>
+Membership is free and you'll earn store credit on every 
+single graphic novel you buy. Members also earn credit when 
+they refer a friend to join!  Come on in and ask for 
+more information.
+-->
+
+						</TABLE></TD>
+		</TR>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><a name="blog"> <a href="/blog"><IMG BORDER="0" WIDTH="398" HEIGHT="16" SRC="images/head_blog.gif"></a></TD>
+				</TR>
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><DIV ALIGN="JUSTIFY">
+
+<TMPL_LOOP NAME=WEBLOG>
+<A HREF="<TMPL_VAR NAME=LINK>" ALT=""><STRONG><TMPL_VAR NAME=TITLE></STRONG></A><BR>
+<TMPL_VAR NAME=DESC>
+<BR><BR>
+</TMPL_LOOP>		
+<p>
+<a href="/blog">blog archives</a><br>
+</DIV></TD>
+							</TR>
+						</TABLE></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+<!-- 
+				<TR>
+					<TD HEIGHT="3" BGCOLOR="#000000"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD><a href=/news.html><IMG border=0 WIDTH="398" HEIGHT="16" SRC="images/head_news.gif"></a></TD>
+				</TR>
+-->
+				<TR>
+					<TD VALIGN="TOP"><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="5">
+							<TR>
+								<TD><DIV ALIGN="JUSTIFY">
+
+<!--
+<TMPL_LOOP NAME=FEEDS>
+	<A HREF="<TMPL_VAR NAME=LINK>" ALT=""> <TMPL_VAR NAME=TITLE></A> [<TMPL_VAR NAME=SITE>] <TMPL_VAR NAME=DESC><BR><BR>
+</TMPL_LOOP>
+<a href=/news.html>more newsfeeds</a>
+-->
+
+
+</DIV></TD>
+							</TR>
+
+<tr><td>
+                                                                                                           
+                                                                                                           
+<!--
+                <center>
+                <strong>Graphic Novel Search</strong>
+                <br>
+                <form action="/books" method=GET>
+                <input type=hidden name=rm value=search>
+                <input type=text size=40 name=search_term><p>
+                <input type=submit value="search titles">
+                <input type=submit name=desc_search value="search descriptions">
+                </center>
+                </form>
+                </center>
+                <TMPL_VAR name=results> <TMPL_VAR name=search_term> <TMPL_VAR name=message>
+                                                                                                           
+-->
+                                                                                                           
+</td></tr>
+
+
+
+
+
+
+
+						</TABLE></TD>
+				</TR>
+				<TR>
+					<TD HEIGHT="4"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="4"></TD>
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="162" VALIGN="TOP" BGCOLOR="#B3A37D"><TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+				<TR>
+					<TD BGCOLOR="#FDE7B1"><IMG WIDTH="162" HEIGHT="130" SRC="images/panels_03.gif"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="3"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD TD BGCOLOR="#FDE7B1"><IMG SRC="images/banner_gn.gif"></TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="3"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="3"></TD>
+				</TR>
+				<TR>
+					<TD ALIGN="CENTER" BACKGROUND="images/stripe_01.gif">
+				<a href="http://www.comicbookshelf.com"><img border=0 src="/images/cbshelflogo.gif"></a>
+			</TD>
+				</TR>
+				<TR>
+					<TD BGCOLOR="#FDE7B1" HEIGHT="2"><IMG SRC="images/spacer.gif" WIDTH="1" HEIGHT="2"></TD>
+				</TR>
+				<TR>
+					<TD><TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6">
+							<TR>
+								<TD  CLASS="directions">
+
+
+<script language="JavaScript" src="http://www.comicbookshelf.com/?rm=feedbox&op=js&uid=1&limit=8" type="text/javascript"></script>
+</center>
+
+</TD>
+									</TR>
+									</TABLE></TD>
+				</TR>
+
+				</TR>
+			</TABLE></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+	</TR>
+	<TR>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+		<TD WIDTH="162" VALIGN="BOTTOM" BGCOLOR="#FEB500"><IMG SRC="images/spacer.gif"></TD>
+		<TD WIDTH="4"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="398" BGCOLOR="#FFFFFF" VALIGN="BOTTOM"><IMG WIDTH="398" HEIGHT="34" SRC="images/squares_bottom.gif"></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="4" HEIGHT="1"></TD>
+		<TD WIDTH="162" BGCOLOR="#B3A37D" VALIGN="BOTTOM"><IMG SRC="images/spacer.gif"></TD>
+		<TD WIDTH="5"><IMG SRC="images/spacer.gif" WIDTH="5" HEIGHT="1"></TD>
+	</TR>
+</TABLE>
+</DIV>
+</BODY>

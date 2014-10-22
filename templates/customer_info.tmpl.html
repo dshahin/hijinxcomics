@@ -1,0 +1,106 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=login> info</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>comic subscriber info mode:</b><br>
+</div>
+
+<p>
+<h2><TMPL_VAR NAME=login></h2>
+
+
+<a href="#rank"onclick="showhide('cust_info');" >hide details</a><br>
+<div  id="cust_info"  style="display: block; " >
+<form action="" method=POST>
+<input type=hidden name=rm value=update_customer>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name</td>
+	<td><input type=text size=30 name=name value="<TMPL_VAR NAME=login>"></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text size=30 name=phone value="<TMPL_VAR NAME=PHONE>"></td>
+
+</tr>
+<tr>
+	<td align=right>email</td>
+	<td><input type=text size=30 name=email value="<TMPL_VAR NAME=EMAIL>"></td>
+
+</tr>
+<tr>
+	<td align=right>address</td>
+	<td><input type=text size=30 name=address value="<TMPL_VAR NAME=ADDRESS>"></td>
+</tr>
+<tr>
+	<td align=right>zip code</td>
+	<td><input type=text size=30 name=zip value="<TMPL_VAR NAME=ZIP>"></td>
+</tr>
+<tr cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="update info">
+</td></tr>
+</form>
+
+</table>
+<p>
+last came in or called:<b> <TMPL_VAR NAME=last_checkin> </b>
+[<a href="?rm=checkin&id=<TMPL_VAR NAME=id>"> check in </a> | 
+<a href="?rm=unfreeze&id=<TMPL_VAR NAME=id>">un</a> / <a href="?rm=freeze&id=<TMPL_VAR NAME=id>"  onClick="return confirm('really freeze <TMPL_VAR NAME=login>?')">freeze</a> | 
+<a href="mailto:<TMPL_VAR NAME=email>?subject=your account at <TMPL_VAR NAME=longstorename> &body=Your last checkin was on <TMPL_VAR NAME=last_checkin>" ><TMPL_VAR NAME=email></a>]
+
+<h3>notes</h3>
+<form action="" method=GET>
+<input type=hidden name=rm value=wish>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+<input type=submit  size=4 maxlength=4 value=" new ">
+<input type=text name="wish" size=50 maxlength=50 >
+</form>
+<ol>
+<TMPL_LOOP NAME=WISHES>
+<li><TMPL_VAR NAME=wish>  [<a href="?rm=delete_wish&wish_id=<TMPL_VAR NAME=wish_id>&id=<TMPL_VAR NAME=id>" >delete</a>]
+</TMPL_LOOP>
+</ol>
+</div>
+<H2><a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">subscriptions</a></H2>
+
+currently subscribes to <b><TMPL_VAR NAME=number_of_subs></b> titles <b><TMPL_VAR NAME=number_of_subs_this_week></b> this week .<br>
+<ol>
+<TMPL_LOOP NAME=TITLES>
+<li><TMPL_VAR NAME=title> <a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a> |
+<a href="?rm=archive&title_id=<TMPL_VAR NAME=id>&id=<TMPL_VAR NAME=cust_id>&bm=info" onClick="return confirm('really archive <TMPL_VAR NAME=title>?')">archive</a> | 
+<a href="?rm=delete&id=<TMPL_VAR NAME=cust_id>&title_id=<TMPL_VAR NAME=id>&bm=info">unsubscribe</a>
+</TMPL_LOOP>
+</ol>
+
+<!--
+<ul>
+<li><font color=yellow>searching or on order</font>
+<li><font color=red>could not locate</font>
+<li><font color=green>awaiting purchase</font>
+<li><font color=blue>purchased</font>
+<li>no action taken
+</ul>
+-->
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

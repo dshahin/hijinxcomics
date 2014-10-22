@@ -1,0 +1,86 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=store_name> today <TMPL_VAR NAME=TODAY></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+ <META HTTP-EQUIV=REFRESH CONTENT=300>
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<h1><TMPL_VAR NAME=store_name> today </h1>
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>Today mode:</b><br>
+Use this mode for daily sales tracking and book club reordering.
+<br>
+</div>
+<input type=hidden name=rm value=list>
+<center>
+<form action="" method=GET>
+<input type=hidden name=rm value=today>
+<input type=submit  size=4 maxlength=4 value="date ">
+<input type=text name="date" size=6 maxlength=6 value="<TMPL_VAR NAME=TODAY>" >
+</form>
+<a href=?rm=today&date=<TMPL_VAR name=lastdate>>prev month</a> | 
+<a href=?rm=today>today</a> | 
+<a href=?rm=today&date=<TMPL_VAR name=nextdate>>next month</a>
+<TMPL_VAR name=CAL>
+
+</center>
+<h3>online orders <TMPL_VAR NAME=ONLINE_ORDER_DATE></h3>
+<TMPL_LOOP NAME=ONLINE_ORDERS>
+<li><TMPL_VAR NAME=name>-<a href="/temp/<TMPL_VAR NAME=order_id>.html"><TMPL_VAR NAME=order_id></a> <TMPL_VAR NAME=type>
+</TMPL_LOOP>
+<h3>book club activity</h3>
+<ol>
+<TMPL_LOOP NAME=BOOK_CLUB>
+	
+	   <li><a href="?rm=member_info&id=<TMPL_VAR NAME=cust_id>"><TMPL_VAR NAME=name></a> <TMPL_VAR NAME=note> <a href="?rm=delete_note_today&note_id=<TMPL_VAR NAME=note_id>&isbn=<TMPL_VAR name=isbn>&today=<TMPL_VAR NAME=TODAY>" >delete</a> 
+<TMPL_IF NAME=isbn>| 
+<a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');>reorder</a> | 
+<a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>>info</a>
+<br><a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><img src=/isbn?isbn=<TMPL_VAR NAME=isbn>&size=1></a>
+</TMPL_IF>
+</TMPL_LOOP>
+</ol>
+
+
+<p>
+<!--
+<form action="" method=GET>
+<input type=hidden name=rm value=today>
+<input type=submit  size=4 maxlength=4 value="since">
+<input type=text name="since" size=6 maxlength=6 >
+</form>
+-->
+
+<h3>subscriber checkins</h3>
+<!-- total subscribers in today:<TMPL_VAR NAME=total_customers><p> -->
+
+<p>
+<ol>
+<TMPL_LOOP NAME=CUSTOMERS>
+	  <li> <a href="?rm=customer_info&id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=name></a>
+	<b><TMPL_VAR NAME=date></b>
+	[ 
+	 <a href="?rm=customer_info&id=<TMPL_VAR NAME=id>">info</a> | 
+	<a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">subs</a> ]
+</TMPL_LOOP>
+</ol>
+<h3>daily notes</h3>
+<ul>
+<TMPL_LOOP NAME=D_NOTES>
+<li><TMPL_VAR NAME=D_NOTE> - <b><TMPL_VAR NAME=EMP_NAME></b> [<a href="?rm=delete_d_note&today=<TMPL_VAR NAME=TODAY>&d_id=<TMPL_VAR NAME=d_id>">x</a>]
+</TMPL_LOOP>
+</ul>
+</form>
+<form action="" method=POST>
+<input type=hidden name=rm value=add_d_note>
+<input type=hidden name=today value=<TMPL_VAR NAME=TODAY>>
+<textarea rows=4 cols=40 name=d_note  ></textarea><p>
+<input type=submit   value="add note ">
+</form>
+
+
+</body>

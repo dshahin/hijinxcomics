@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>customers</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html"><p>
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+
+<h1>comic book subscribers</h1>
+ <a href="#"onclick="showhide('new_sub');">add new subscriber</a><p>
+<div id="new_sub"  style="display: none; background: white; " >
+<form action="" method=GET>
+<input type=hidden name=rm value=add_customer>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name *</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone *</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr>
+<tr>
+	<td align=right>email *</td>
+	<td><input type=text length=40 name=email></td>
+</tr>
+<tr>
+	<td align=right>address *</td>
+	<td><input type=text length=40 name=address></td>
+</tr>
+<tr>
+	<td align=right>zip code *</td>
+	<td><input type=text length=40 name=zip></td>
+
+</tr>
+<tr cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="add customer" >
+</td></tr>
+</form>
+
+</table>
+</div>
+<TMPL_INCLUDE NAME="cust_alphabar.tmpl.html">
+
+<h1><TMPL_VAR NAME=store_name> book club members</h1>
+ <a href="#"onclick="showhide('new_member');">add new book club member</a><p>
+<div id="new_member"  style="display: none; background: white; " >
+<form action="" method=GET>
+<input type=hidden name=rm value=add_book_club_member>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name *</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr><tr>
+	<td align=right>email *</td>
+	<td><input type=text length=40 name=email></td>
+
+</tr>
+
+<tr>
+	<td align=right>address</td>
+	<td><input type=text length=40 name=address></td>
+</tr>
+<tr>
+	<td align=right>zip code *</td>
+	<td><input type=text length=40 name=zip></td>
+
+</tr><tr>
+	<td align=right>initial credit</td>
+        <td><input type=text length=40 name=credit></td>
+</tr>
+<tr  cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="add customer">
+</td></tr>
+</form>
+
+</table>
+</div>
+<TMPL_INCLUDE NAME="member_alphabar.tmpl.html">
+
+<h1> frozen subscribers</h1>
+<TMPL_INCLUDE NAME="frozen_alphabar.tmpl.html">
+
+
+</body>

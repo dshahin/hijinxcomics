@@ -1,0 +1,86 @@
+<html>
+<head>
+<TMPL_LOOP NAME=titles>
+<title><TMPL_VAR NAME=title></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<a href="<TMPL_VAR NAME=url_big>"><img src="<TMPL_VAR NAME=url_med>"></a><br>
+DCD:<a href="https://retailer.diamondcomics.com/main/ShoppingListAdd.asp?ItemNo=<TMPL_VAR NAME=DCD>" target="_blank"><TMPL_VAR NAME=DCD></a><TMPL_VAR NAME=DISCOUNT>
+<br>
+
+<form action="" method=POST>
+<input type=hidden name=rm value=update_book>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0 bgcolor=#CCCCFF >
+<tr>
+	<td align=right>title</td>
+	<td><input type=text size=50 name=title value="<TMPL_VAR NAME=title>"></td>
+
+</tr>
+<tr>
+	<td>
+	in stock
+	</td>
+<td>
+<input type=text size=3 name=title value="<TMPL_VAR NAME=in_stock>">
+</td>
+</tr>
+<tr>
+<td>
+on order
+</td>
+<td>
+<input type=text size=3 name=title value="<TMPL_VAR NAME=on_order>">
+</td>
+</tr>
+<tr>
+<td>
+min stock
+</td>
+<td>
+<input type=text size=3 name=title value="<TMPL_VAR NAME=min_stock>">
+</td>
+</tr>
+<tr>
+	<td align=right>isbn</td>
+	<td><input type=text size=30 name=isbn value="<TMPL_VAR NAME=isbn>"></td>
+</tr>
+<tr>
+	<td align=right>dcd</td>
+	<td><input type=text size=30 name=isbn value="<TMPL_VAR NAME=dcd>"></td>
+</tr>
+<tr>
+	<td align=right>price</td>
+	<td><input type=text size=10 name=price value="<TMPL_VAR NAME=price>">
+	</td>
+</tr>
+<tr>
+	<td align=right>upc 1</td>
+	<td><input type=text size=30 name=upc_1 value="<TMPL_VAR NAME=UPC_1>"></td>
+</tr>
+<tr>
+	<td align=right>upc 2</td>
+	<td><input type=text size=30 name=upc_2 value="<TMPL_VAR NAME=UPC_2>"></td>
+</tr>
+<tr>
+	<td colspan=2>
+	<textarea rows=10 cols=55 name=info><TMPL_VAR NAME=INFO></textarea>
+	</td>
+</tr>
+<tr bgcolor=#CCCCFF cellpadding=0 cellspacing=0 align=top bgcolor=white>
+	<td  align=right colspan=2>
+<input type=submit value="update info">
+</td></tr>
+</form>
+
+</table>
+
+</TMPL_LOOP>
+
+</body>
+</html>

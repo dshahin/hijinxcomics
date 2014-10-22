@@ -1,0 +1,134 @@
+<HTML><HEAD><TITLE>Upload Reorder File</TITLE><LINK REL=STYLESHEET TYPE="text/css" HREF="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPublic/diamondstyle.css" TITLE="Style"><SCRIPT LANGUAGE="JavaScript">
+<!--
+function CallHelp(FileName)
+{var HoldPath="../../help/" + FileName
+window.open(HoldPath,
+"HELPWINDOW",
+"directories=no,location=no,menubar=no,status=no,titlebar=no,toolbar=no,scrollbars=yes,width=500,height=300,resizeable=no");
+        return true;
+}
+function validateUploadFile(formID)
+{var answer;   if(document.FORMLOADFILE.POSTEDFLAG.value == "Y")
+   {
+       alert("A file has already been posted from this page. If you need to send another file, return to the menu and come back to this page.");
+       return false;
+   }
+   else if(document.FORMLOADFILE.POSTEDFLAG.value == "N")
+  {
+      document.FORMLOADFILE.POSTEDFLAG.value = "Y";
+       return true;
+   }
+}
+//-->
+</SCRIPT>
+</HEAD><DIV ID="DIV1" CLASS="style1">
+<BODY><BR>
+<TABLE WIDTH="100%" BORDER="0" CLASS="tablepagetop">
+<TR>
+<TD CLASS="tabledata">
+<IMG SRC="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/images/dcd_ret.gif">
+</TD>
+<TD CLASS="tabledata">
+<H2>Upload Reorder File</H2></TD>
+</TR>
+</TABLE>
+<BR><TABLE CLASS="customerdatatable">
+<TR>
+<TD CLASS="tableprompt">CUST #</TD><TD CLASS="tabledata" > 66316</TD>
+<TD CLASS="tabledata">HIJINX COMICS                 </TD>
+</TR>
+</TABLE>
+<TABLE>
+<TR>
+<TD VALIGN="TOP">
+<FORM NAME="FORMRETURNMENU" ACTION="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/scripts/CustomerChooser.dll" METHOD="POST"> <INPUT TYPE="IMAGE"  ALT="No Picture"  SRC ="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/images/CustomerMenu.gif"><INPUT TYPE="HIDDEN" NAME="CURRAPPID" VALUE="00002">
+<INPUT TYPE="HIDDEN" NAME="SHOWSTKONLY" VALUE="N">
+<INPUT TYPE="HIDDEN" NAME="QUICKSHIP" VALUE="N">
+<INPUT TYPE="HIDDEN" NAME="ALLOWBO" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="SLOWLINE" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="SUPPRESSCHILDREN" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="CURRCUSTNO" VALUE=" 66316">
+<INPUT TYPE="HIDDEN" NAME="CURRCUSTNAME" VALUE="HIJINX COMICS                 ">
+</FORM>
+</TD>
+<TD VALIGN="TOP" BORDER="0">
+<A NAME="UploadReoFile"><A HREF="#UploadReoFile" onClick="CallHelp('helpReordersUploadUsersGuide.htm');"><IMG SRC="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/images/Help.gif"></A>
+</A>
+</TD>
+</TR>
+</TABLE>
+<BR><FORM NAME="FORMLOADFILE" ENCTYPE="multipart/form-data" onsubmit="return validateUploadFile(this.form)" ACTION="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/scripts/addreorder.dll" METHOD="POST"><input type="hidden" name="POSTEDFLAG" value="N">
+<input type="hidden" name="CURRAPPID" value="000003">
+<INPUT TYPE="HIDDEN" NAME="SHOWSTKONLY" VALUE="N">
+<INPUT TYPE="HIDDEN" NAME="QUICKSHIP" VALUE="N">
+<INPUT TYPE="HIDDEN" NAME="ALLOWBO" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="SLOWLINE" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="SUPPRESSCHILDREN" VALUE="Y">
+<INPUT TYPE="HIDDEN" NAME="CURRCUSTNO" VALUE=" 66316">
+<INPUT TYPE="HIDDEN" NAME="CURRCUSTNAME" VALUE="HIJINX COMICS                 ">
+<BR>
+<H3><FONT COLOR="#FF0000">To be sure your order is uploaded correctly: Do not skip any steps.</FONT></H3><H3>1.) Enter a Purchase Order number (not required)</H3>
+<TABLE ID="Table1"><TR>
+<TD CLASS="tabledata">
+<INPUT TYPE="TEXT" NAME="CURRPONUMBER"  maxlength="20" VALUE="" ID="Text1"></TD>
+</TR>
+</TABLE>
+<HR>
+<H3>2.) Review Shipping Preference</H3>
+<TABLE CLASS="standardtable" ID="Table2">
+<TR>
+<TD CLASS="tabledata">
+<INPUT TYPE="RADIO" CHECKED NAME="FILEQUICKSHIP" VALUE="N" ID="Radio1">
+</TD>
+<td CLASS="tabledatagraybg">Reship this product through my local distribution center</td>
+</TR>
+<TR>
+<TD CLASS="tabledata"><INPUT TYPE="RADIO" NAME="FILEQUICKSHIP" VALUE="Y" ID="Radio2"></TD>
+<td CLASS="tabledatagraybg">Maximize speed by shipping any Memphis, Tennessee distribution center product directly to my store</td>
+</TR>
+</TABLE>
+<BR>
+<H3>3.) Review Backorder Preference</H3>
+<TABLE CLASS="standardtable" ID="Table3">
+<TR>
+<TD CLASS="tabledata">
+<INPUT TYPE="RADIO" NAME="FILEALLOWBO" VALUE="N" ID="Radio3">
+</TD><td CLASS="tabledatagraybg">DON'T Allow Backorders for these items</td>
+</TR>
+<TR>
+<TD CLASS="tabledata"><INPUT TYPE="RADIO" CHECKED NAME="FILEALLOWBO" VALUE="Y" ID="Radio4"></TD>
+<td CLASS="tabledatagraybg">Allow Backorders for these items</td>
+</TABLE>
+<HR>
+<H3>4.) After order is uploaded ...</H3>
+<TABLE CLASS="standardtable" ID="Table3">
+<TR>
+<TD CLASS="tabledata">
+<INPUT TYPE="RADIO" NAME="REVIEWBEFOREPOST" VALUE="N" ID="Radio1">
+</TD>
+<td CLASS="tabledatagraybg">Commit this order without a line review</td>
+</TR>
+<TR>
+<TD CLASS="tabledata"><INPUT TYPE="RADIO" CHECKED NAME="REVIEWBEFOREPOST" VALUE="Y" ID="Radio2"></TD>
+<td CLASS="tabledatagraybg">Review and edit order, no automatic commit</td>
+</TR>
+</TABLE>
+<H3>
+5.) Enter <FONT COLOR="#FF0000"><B>the name of the file you wish to upload</B></FONT></H3>
+<TABLE CLASS="standardtable" ID="Table5">
+<TR>
+<td CLASS="tabledatagraybg"><INPUT TYPE="FILE" NAME="UPLOADNAME"> <b><i><small>Note: if a button labeled "Browse..." does not appear, then your browser does not support File Upload.</small></i></b></td>
+</TR>
+</TABLE>
+<H3>6.) Press <FONT COLOR="#FF0000"><B>UPLOAD NOW</B></FONT> to convert your file to an order</H3>
+<TABLE CLASS="standardtable" ID="Table3">
+<TR>
+<TD CLASS="tabledata">
+<INPUT TYPE="IMAGE" NAME="SUBMITBUTTON" SRC="https://retailer.diamondcomics.com/main/root_retailcustomer/CustomerPrivate/images/UploadNow.gif">
+</td>
+<td CLASS="tabledatagraybg">Press 'Upload Now' only <FONT COLOR="#FF0000"><B>One Time</B></FONT> and <FONT COLOR="#FF0000"><B>wait</B></FONT> for the upload to occur</td>
+</TR>
+</TABLE>
+</FORM>
+</DIV>
+</BODY></HTML>

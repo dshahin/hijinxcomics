@@ -1,0 +1,192 @@
+<html>
+<head>
+<title><TMPL_VAR NAME="title"></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>cycle sheet mode:</b><br>
+</div>
+
+<p>
+<h2><a href="?rm=title_info&title_id=<TMPL_VAR NAME=title_id>"><TMPL_VAR NAME="title"></a>
+
+<img border=0 src=?rm=sparkline&title_id=<TMPL_VAR NAME=title_id>>
+</h2>
+<!--
+<form action="" method=GET>
+<input type=hidden name=rm value=clone_title>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+<input type=text size=6 name=merge_cycles >
+<input type=submit value="merge cycles">
+</form>
+-->
+<table>
+<tr>
+<td>
+<a href="?rm=chart&title_id=<TMPL_VAR NAME=title_id>&limit=<TMPL_VAR NAME=limit>">
+<img border=0 src="?rm=chart&title_id=<TMPL_VAR NAME=title_id>&limit=<TMPL_VAR NAME=limit>">
+</td>
+<td valign=top>
+<b>title sell-through = <TMPL_VAR NAME=avg>%<br>
+average sold = <TMPL_VAR NAME=avg_sold><br>
+ std deviation = <TMPL_VAR NAME=std> </b><br>
+</td>
+<tr>
+</table>
+
+<p>
+<form action="" method=POST>
+<input type=hidden name=rm value=cycles>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=title_id> >
+<input type=text name=limit size=4 value="<TMPL_VAR NAME=limit>" >
+<input type=submit name="add_issue_cycle" size=4 maxlength=4 value="months">
+</form>
+<p>
+<table bgcolor=black cellpadding=2 border=0><tr><td>
+<table bgcolor=white cellpadding=0 border=0><tr><td>
+<table cellpadding=1 cellspacing=1>
+	<tr bgcolor=gray>
+		<th bgcolor=red>
+			#
+		</th>
+		<th bgcolor=red>
+			rcv 
+		</th>
+		<th bgcolor=yellow>
+			r/o 
+		</th> 
+		<th>
+			week 1
+		</th>
+		<th>
+			now
+		</th>
+		<th>
+			subs
+		</th>
+		<th>
+			sold
+		</th>
+		<th>
+			sub %
+		</th>
+		<th>
+			sell thru
+		</th>
+		<th>
+			notes
+		</th>
+		<th>
+			action
+		</th>
+	</tr>
+
+	<tr >
+		<form action="" method=POST>
+		<input type=hidden name=rm value=cycles>
+		<input type=hidden name=title_id value=<TMPL_VAR NAME=title_id>
+		<input type=hidden name=new value=<TMPL_VAR NAME=title_id> >
+		<td >
+			<input type=text name="issue" size=3 maxlength=4>
+		</td>
+		<td >
+			<input type=text name="rcv_qty" size=3 maxlength=4>
+		</td>
+		<td >
+			<input type=text name="reorder" size=3 maxlength=4>
+		</td> 
+		<td >
+			<input type=text name="week_1" size=3 maxlength=4>
+		</td>
+		<td >
+			<input type=text name="week_2" size=3 maxlength=4>
+		</td>
+		<td>
+
+		</td>
+		<td>
+			
+		</td>
+		<td>
+			
+		</td>
+		<td>
+		
+		</td>
+		<td>
+			<input type=text name="description" size=10 maxlength=200 >
+		</td>
+		<td align=left >
+			<input type=hidden name=new value="<TMPL_VAR NAME=title_id>" >
+			<input type=submit name="add_issue_cycle" size=4 maxlength=4 value="create">
+			<input type=reset name="reset" size=4 maxlength=4 value="reset">
+		</td>
+		</form>
+	</tr>
+<TMPL_LOOP NAME=CYCLES>
+<form action="" method=POST>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=title_id>>
+<input type=hidden name=limit value=<TMPL_VAR NAME=limit>>
+<input type=hidden name=rm value=cycles>
+	<tr >
+		<td >
+			<input readonly type=text name="issue" size=3 maxlength=4 value="<TMPL_VAR NAME=issue>">
+		</td>
+		<td >
+			<input type=text name="rcv_qty" size=3 maxlength=4 value="<TMPL_VAR NAME=rcv_qty>">
+		</td>
+		<td >
+			<input type=text name="reorder" size=3 maxlength=4 value="<TMPL_VAR NAME=reorder>">
+		</td> 
+		<TMPL_IF name="__first__">
+		<td >
+			<input type=text name="week_1" size=3 maxlength=4 value="<TMPL_VAR NAME=week_1>">
+		</td>
+ 		<TMPL_ELSE >
+  	                 <td >
+				<center>
+				<input type=hidden name="week_1" value="<TMPL_VAR NAME=week_1>">
+  	                         <TMPL_VAR NAME=week_1>
+				</center>
+  	                 </td>
+  	 	</TMPL_IF>
+		<td >
+			<input type=text name="week_2" size=3 maxlength=4 value="<TMPL_VAR NAME=week_2>">
+		</td>
+		<td align=center>
+			<b><TMPL_VAR NAME=subs></b>
+		</td>
+		<td align=center>
+			<b><TMPL_VAR NAME=sell_thru></b>
+		</td>
+		<td align=center>
+			<TMPL_VAR NAME=sub_percentage>%
+		</td>
+		<td align=right>
+			<TMPL_VAR NAME=sell_thru_percentage>%
+		</td>
+		<td>
+			<input type=text size=10 maxlength=100 name="description" value="<TMPL_VAR NAME=description>">
+		</td>
+		<td nowrap >
+			<center>
+			<input type=submit name="update_issue_cycle" size=4 maxlength=4 value="update">
+			<input type=submit name="delete_issue_cycle" size=4 maxlength=4 value="delete">
+<a href=javascript:void(0); onClick=OpenShoppingListWindow('<TMPL_VAR NAME=dcd>');><TMPL_VAR NAME=dcd></a>
+			</center>
+		</td>
+	</tr>
+</form>
+
+</TMPL_LOOP>
+</table>
+<p>
+<p>
+</td></tr></table>
+</td></tr></table>
+
+</body>
+</html>

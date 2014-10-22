@@ -1,0 +1,108 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=store_name> subscribers</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html"><p>
+<div  id="tooltip"   style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip');">X</a>] subscribers mode tips:</b>
+<li>To get to customer info <b>without checking in</b>, click on the subscriber name.
+<li>click on "subs" to go directly to comics subscription mode for this subscriber without checking in.
+<li>Click on the colored checkin box to checkin customer <b>and</b> enter customer info mode.
+<div  id="backgrounder"  style="background: lightgray;" >
+<li> <font color=#33CC00>7 days or less</font>, <font color=#FFFF00 bgcolor=#B1B1B1>14 or less</font>, <font color=#FF9900>21</font>, <font color=#FF0000> 30</font>, <font color=#B1B1B1> over 30 days</font> (good for policy enforcement)
+</div>
+<li>Clicking on zip code will take you to demographic info for that area from zip-codes.com.
+</div>
+
+
+
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+
+<h1>comic book subscribers</h1>
+<TMPL_INCLUDE NAME="cust_alphabar.tmpl.html">
+active subscribers:<TMPL_VAR NAME=total_customers> <a href=#newcust>add new customer</a> | 
+<a href="?rm=list_customers&show=frozen">show frozen</a> |
+<a href="?rm=graphs">zip graphs</a>
+
+<p>
+<p>
+<table color=black><tr><td>
+<table border=1 cellpadding=2 bgcolor=#FFFFFF >
+<TMPL_LOOP NAME=CUSTOMERS>
+<tr> 
+	<td > 
+	   <a href="?rm=customer_info&id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=name></a>
+	</td>
+	<td>
+		<a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">subs</a>
+	</td>
+	<td bgcolor=<TMPL_VAR NAME=status> nowrap ><a href="?rm=checkin&id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=checkin> days</a></td>
+        <td>
+            <a href="?rm=freeze&id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>"">freeze</a>
+       </td>
+        <td>
+		<TMPL_VAR NAME=phone>
+	</td>
+	<td>
+		<a href=http://www.zipskinny.com/index.php?zip=<TMPL_VAR NAME=zip>><TMPL_VAR NAME=zip></a>
+	</td>
+	<td>
+		<a href="mailto:<TMPL_VAR NAME=email>?subject=Your account at <TMPL_VAR NAME=LONGSTORENAME>&body=<TMPL_VAR NAME=name>, it has been <TMPL_VAR NAME=checkin> days since your last checkin."><TMPL_VAR NAME=email></a>
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr>
+</table>
+<br>
+</form>
+<h3>add new subscriber</h3>
+<form action="" method=GET>
+<input type=hidden name=rm value=add_customer>
+<TMPL_VAR NAME=message>
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>name</td>
+	<td><input type=text length=40 name=new_customer></td>
+
+</tr><tr>
+	<td align=right>phone</td>
+	<td><input type=text length=40 name=phone></td>
+
+</tr>
+<tr>
+	<td align=right>email</td>
+	<td><input type=text length=40 name=email></td>
+</tr>
+<tr>
+	<td align=right>address</td>
+	<td><input type=text length=40 name=address></td>
+</tr>
+<tr>
+	<td align=right>zip code</td>
+	<td><input type=text length=40 name=zip></td>
+
+</tr>
+<tr cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="add customer" >
+</td></tr>
+</form>
+
+</table>
+<h3>mass import customers</h3>
+<form action="" method=POST ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="import_customers">
+ <INPUT TYPE="file" NAME="customers.tsv" >
+ <INPUT TYPE="submit" NAME="Submit" VALUE="import customers.tsv">
+</form>
+<br>
+(use TAB delimited text file format: NAME,PHONE,EMAIL,ZIP,ADDRESS)
+
+</body>

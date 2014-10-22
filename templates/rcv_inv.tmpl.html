@@ -1,0 +1,79 @@
+<html>
+<head>
+
+<title>receive invoice <TMPL_VAR NAME=date> <TMPL_VAR NAME=dcd_cust_id></title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<link type="text/css" href="/css/excite-bike/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+
+<h1>receive invoice <TMPL_VAR NAME=dcd_cust_id> <TMPL_VAR NAME=date></a></h1>
+<a href=?rm=view_invoice&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >view</a> | 
+<a href=?rm=rcv_inv&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >receive</a> | 
+<a href=?rm=osd&invoice_id=<TMPL_VAR NAME=INVOICE_ID> >o/s/d report</a>
+<br>
+<input id="date"></input><button id="genPage">Update Website</button>
+<form action="?" name=rcv_form  method=POST>
+<input type=submit value="receive items">
+<input type=hidden name=rm value=rcv_inv>
+<input type=hidden name=update value=1>
+<input type=hidden name=invoice_id value=<TMPL_VAR NAME=invoice_id>>
+<table bgcolor=white border=1>
+<tr>
+	<th>itemno</th>
+	<th>category</th>
+	<th>description</th>
+	<th>price</th>
+	<th>qty</th>
+	<th>rcv</th>
+	<th>dam</th>
+</tr>
+<TMPL_LOOP NAME=LINES>
+<tr align=right bgcolor=<TMPL_VAR NAME=color>>
+	<td> <font size=-8><TMPL_VAR NAME=itemno></font></td>
+	<td bgcolor=<TMPL_VAR NAME=color> > <font size=-8><TMPL_VAR NAME=cat_id></font></td>
+	<td> <TMPL_VAR NAME=descr>
+	<TMPL_IF NAME=isbn>
+	<a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><img align=middle src=/isbn?isbn=<TMPL_VAR NAME=isbn>&size=1></a>
+	</TMPL_IF>
+	</td>
+	<td>$<TMPL_VAR NAME=retail_price></td>
+	<td><u><a name="<TMPL_VAR NAME=line_id>"  onclick="document.rcv_form.rcvd_<TMPL_VAR NAME=line_id>.value = <TMPL_VAR NAME=qty> ";><TMPL_VAR NAME=qty></a></u></td>
+	<td><input type=text size=3 name=rcvd_<TMPL_VAR NAME=line_id> value=<TMPL_VAR NAME=received>></td>
+	<td><input type=text size=3 name=dmgd_<TMPL_VAR NAME=line_id> value=<TMPL_VAR NAME=damages>></td>
+<input type=hidden name=line_id value=<TMPL_VAR NAME=line_id>>
+</tr>
+<TMPL_IF name=po_no>
+<tr>
+	<td colspan=7 bgcolor=lightyellow>PO: <TMPL_VAR NAME=po_no></td>
+</tr>
+</TMPL_IF>
+</TMPL_LOOP>
+</form>
+</table>
+<script type="text/javascript">
+$(function(){
+	$('input#date').datepicker();
+	$('#genPage').button().click(function(){
+		var postDate = encodeURI($('input#date').val());
+		//var url = 'http://www.hijinxcomics.com/pos/hijinx/?rm=gen_web&date='+postDate;
+		var url = '?rm=gen_web';
+		console.log('click:' + url);
+		$.getJSON(url, {}, function(data) {
+			console.log('data :'+ data);
+			if(data.status == 'success'){
+				console.log('website updated');
+			}else{
+				alert('error' +  data.status);
+			}
+		});
+	});
+	console.log('ready');
+});
+</script>
+</body>
+</html>

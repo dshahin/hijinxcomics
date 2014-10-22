@@ -1,0 +1,230 @@
+<html>
+<head>
+<TMPL_IF NAME=isbn>
+<title><TMPL_VAR NAME=title></title>
+<TMPL_ELSE>
+<title>books</title>
+</TMPL_IF>
+
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.hijinxcomics.com/opensearch_desc.xml" title="Hijinx ISBN search" />
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+<!-- 
+<h1>books</h1>
+<form action="" method=GET>
+<input type=hidden name=rm value=search>
+<input type=hidden name=upc_search value="search upc">
+<input type=text size=20 name=search_term onkeydown="return blockEnter(event)" >
+<input type=submit name=upc_search value="search upc">
+</form>
+<p>
+
+<form action="" method=GET>
+<input type=hidden name=rm value=search>
+<input type=text size=50 name=search_term onkeydown="return blockEnter(event)" >
+<input type=submit value="search titles">
+<input type=submit name=desc_search value="search descriptions">
+<input type=submit name=isbn_search value="search isbn">
+</form>
+<table border=0 width=600>
+<TMPL_VAR NAME=dfsfd> <TMPL_VAR NAME=message> 
+<p>
+<TMPL_LOOP NAME=titles>
+<tr>
+<td>
+
+<a href="?rm=detail&id=<TMPL_VAR NAME=id>">
+<img src="<TMPL_VAR NAME=url_small>"> </a>
+</td>
+<td>
+<b><a href="?rm=detail&id=<TMPL_VAR NAME=id>" ><TMPL_VAR NAME=title></a></b><br> 
+ dcd: <a href="https://retailer.diamondcomics.com/main/data_tools/ShoppingListAdd.asp?ItemNo=<TMPL_VAR NAME=DCD>" target="_blank"><TMPL_VAR NAME=DCD></a>  
+isbn:
+<a href="http://www.wackyhijinx.com/ISBN?rm=lookup&code=<TMPL_VAR NAME=ISBN>" target="_blank"><TMPL_VAR NAME=ISBN></a><br>
+PRICE: <b>$<TMPL_VAR NAME=PRICE></b> DISC: <b><TMPL_VAR NAME=DISCOUNT></b>
+UPC: <b><TMPL_VAR NAME=UPC_1></b>
+<!-- begin  paypal -->
+<!-- end  paypal -->
+</td>
+<tr><td colspan=2><TMPL_VAR NAME=INFO></td></tr>
+</TMPL_LOOP>
+</table>
+<hr>
+  -->
+[ <a href=?rm=book_reorders>suggested book reorders</a> | 
+<a href=?rm=os_book_reorders>outstanding book reorders</a> | 
+<a href=?rm=top_gns>bestselling books</a> |
+<a href=?rm=books_csv>books csv</a>  | 
+<a href=?rm=used_books>used books</a>  
+
+
+]<br>
+<h1>books</h1>
+<TMPL_IF name=results>
+</TMPL_IF>
+<TMPL_IF name=isbn>
+<table border=0>
+<tr><td>
+<img src=/isbn?isbn=<TMPL_VAR NAME=isbn>><br>
+</td>
+<td valign=top>
+<form name=tag action=? method=GET>
+<input type=hidden name=rm value=tag>
+<input type=hidden name=type value=book>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<input type=hidden name=isbn value=<TMPL_VAR NAME=isbn>>
+<input type=submit value="tag">
+<input type=text size=20 name=tag>
+</form>
+<TMPL_LOOP NAME=tags>
+<li><a href=?rm=tag_info&type=book&tag=<TMPL_VAR NAME=safe>><TMPL_VAR NAME=tag></a>
+(<a href=?rm=del_tag&tag=<TMPL_VAR NAME=safe>&id=<TMPL_VAR NAME=id>&type=book&isbn=<TMPL_VAR NAME=isbn>>x</a>)<br>
+</TMPL_LOOP>
+</td>
+</tr>
+</table>
+id: <TMPL_VAR NAME=id><br>
+<a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');>info/reorder</a><br>
+<a href=http://www.comicbookshelf.com/?term=<TMPL_VAR NAME=isbn>&rm=isbn_search>comicbookshelf.com</a> | 
+<a href=http://www.abebooks.com/servlet/SearchResults?isbn=<TMPL_VAR NAME=isbn>/>ABE books</a>
+    <form method="post" action="http://s1.amazon.com/exec/varzea/sdp/sai-condition//105-3250810-2833227" class="searchForms">
+        sell on  <a href=http://www.amazon.com/exec/obidos/ASIN/<TMPL_VAR NAME=isbn>/>Amazon</a>: 
+        <input type="hidden" name="sdp-sai-asin" value="<TMPL_VAR NAME=isbn>" size="15"><input type="image" src="http://ec1.images-amazon.com/images/G/01/buttons/continue-blue-arrow.gif"  width="86" alt="Continue" align="absmiddle" name="sdp-sai-asin.submit" id="sdp-sai-asin.submit" height="22" border="0" />
+    </form>
+<form name=book action="" method=POST>
+<input type=hidden name=rm value=books>
+<input type=hidden name=save_book value=1>
+
+<input type=hidden name=id value="<TMPL_VAR name=id>">
+<a name=newcust>
+<table border=0  >
+<tr>
+	<td align=right>title</td>
+	<td ><input type=text size=50 name=title value="<TMPL_VAR name=title>" ></td>
+
+</tr>
+<tr>
+	<td align=right>isbn</td>
+	<td ><input type=text size=30 name=isbn value=<TMPL_VAR name=isbn>></td>
+</tr>
+<tr>
+	<td align=right>dcd</td>
+	<td ><input type=text size=30 name=dcd value="<TMPL_VAR name=dcd>" >
+<a href=javascript:void(0); onClick=OpenShoppingListWindow('<TMPL_VAR NAME=dcd>');><TMPL_VAR NAME=dcd></a>
+
+</td>
+</tr>
+<tr>
+	<td align=right>price</td>
+	<td ><input type=text size=10 name=price value="<TMPL_VAR name=price>" >
+	</td>
+</tr>
+<tr>
+	<td align=right>upc</td>
+	<td ><input type=text size=30 name=upc value="<TMPL_VAR name=upc>" ></td>
+</tr>
+<tr>
+	<td align=right>in stock </td>
+	<td><input type=text size=4 name=in_stock value="<TMPL_VAR name=in_stock>"></td>
+</tr>
+<tr>
+	<td align=right>min </td>
+	<td><input type=text size=4 name=min value="<TMPL_VAR name=min>" ></td>
+</tr>
+<tr>
+	<td align=right>on order</td>
+	<td><input type=text size=4 name=on_order value="<TMPL_VAR name=on_order>"></td>
+</tr>
+<tr>
+	<td colspan=2>
+sold: <TMPL_VAR name=num><br>
+<!-- uncomment for quick zeroing tool
+<a href=?rm=zero_book&isbn=<TMPL_VAR name=isbn>  onClick="return confirm('really zero inventory on  <TMPL_VAR NAME=title>?')">zero inventory</a><br>
+-->
+		description:<br>
+<textarea rows=4 cols=55 name=info><TMPL_VAR name=info></textarea>
+	</td>
+</tr>
+<tr  cellpadding=0 cellspacing=0 align=top >
+	<td  align=right colspan=2>
+<input type=submit value="save book">
+</td></tr>
+</form>
+<!-- <script language="JavaScript"> document.book.in_stock.focus(); </script> -->
+<script language="JavaScript"> document.tag.tag.focus(); </script>
+</table>
+<h3>sales history <a href=?rm=book_email_list&isbn=<TMPL_VAR NAME=isbn>>email</a></h3>
+<ol>
+<TMPL_LOOP NAME=history>
+<li><a href=?rm=member_info&id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=name></a> <TMPL_VAR NAME=note>
+</TMPL_LOOP>
+</ol>
+<h3>suggestions</h3>
+<ol>
+<TMPL_LOOP NAME=suggestions>
+<li><a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR NAME=title></a>
+</TMPL_LOOP>
+</ol>
+<TMPL_ELSE>
+<form name=upc_search action="" method=GET>
+<input type=hidden name=rm value=books>
+	upc/isbn :<input type=text size=30 name=upc >
+</form>
+<form action="" method=POST name=search>
+<input type=hidden name=rm value=book_search>
+	title search :<input type=text size=30 name=search_term >
+</form>
+<script language="JavaScript"> document.search.search_term.focus(); </script>
+<b>[<a href="#"onclick="showhide('import');">import</a>]</b>
+<div  id="import"   style="display: none; background: white; " >
+<form action="" method=POST  ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="import_books">
+ <INPUT TYPE="file" NAME="isbn.csv" >
+ <INPUT TYPE="submit" NAME="Submit" VALUE="import isbn.csv">
+</form>
+(import list of books.  format: itemcode, title, issue, price, isbn)
+<form action="" method=POST  ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="import_raw_isbn">
+ <INPUT TYPE="file" NAME="isbn.txt" >
+ <INPUT TYPE="submit" NAME="Submit" VALUE="import isbn.txt">
+</form>
+(import list of books.  format: isbn)
+</div>
+</TMPL_IF>
+<h3>search term:<TMPL_VAR NAME=search_term></h3>
+<TMPL_LOOP name=books>
+<br><a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><img src=/isbn?isbn=<TMPL_VAR NAME=isbn>&size=1></a> <a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR name=title></a>
+
+$<TMPL_VAR NAME=price><br>
+<TMPL_IF NAME=isbn>
+isbn: <TMPL_VAR NAME=isbn>
+DCD:<a href=javascript:void(0); onClick=OpenISBNWindow('<TMPL_VAR NAME=isbn>');><font color=red><TMPL_VAR NAME=dcd></font></a> 
+B&T:<a href=javascript:void(0); onClick=OpenBTWindow1('<TMPL_VAR NAME=isbn>');><font color=red>1</font></a> 
+ <a href=javascript:void(0); onClick=OpenBTWindow2('<TMPL_VAR NAME=isbn>');><font color=red>2</font></a> 
+ <a href=javascript:void(0); onClick=OpenBTWindow3('<TMPL_VAR NAME=isbn>');><font color=red>3</font></a> 
+ <a href=javascript:void(0); onClick=OpenBTWindow4('<TMPL_VAR NAME=isbn>');><font color=red>4</font></a> 
+<br>
+</TMPL_IF>
+<form action="" method=GET  ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="edit_book_results">
+<input type="hidden" name="search_term" value="<TMPL_VAR NAME=search_term>">
+<input type="hidden" name="id" value="<TMPL_VAR NAME=id>">
+sold: <TMPL_VAR NAME=sold> 
+min: <input type=text size=3 name="min_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=min>" >
+in stock: <input type=text size=3 name="in_stock_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=in_stock>" >
+on order: <input type=text size=3 name="on_order_<TMPL_VAR NAME=id>" value="<TMPL_VAR NAME=on_order>" >
+used: <TMPL_VAR NAME=used_in_stock> 
+<br>
+
+</TMPL_LOOP>
+<input type=submit value="update">
+</form>
+
+
+</body>
+</html>

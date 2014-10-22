@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>frozen customers</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<input type=hidden name=rm value=list>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+
+
+<h1> frozen customers</h1>
+<TMPL_INCLUDE NAME="frozen_alphabar.tmpl.html">
+total frozen subscribers:<TMPL_VAR NAME=total_customers>
+<a href="?rm=list_customers">show unfrozen</a><p>
+<p>
+<table bgcolor=black><tr><td>
+<table border=1 cellpadding=2 bgcolor=#FFFFFF >
+<TMPL_LOOP NAME=CUSTOMERS>
+<tr> 
+	<td > 
+	   <TMPL_VAR NAME=name>
+	</td>
+	<td > 
+	   <TMPL_VAR NAME=phone>
+	</td>
+	<td > 
+	   <TMPL_VAR NAME=zip>
+	</td>
+	<td bgcolor=<TMPL_VAR NAME=status> nowrap ><TMPL_VAR NAME=checkin> days</td>
+	<td nowrap>
+	[ 
+	 <a href="?rm=customer_info&id=<TMPL_VAR NAME=id>">info</a> | 
+	 <a href="?rm=checkin&id=<TMPL_VAR NAME=id>">checkin</a> | 
+	<a href="?rm=edit_subscriptions&id=<TMPL_VAR NAME=id>">subs</a> |
+	<a href="?rm=unfreeze&id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR name=letter>">unfreeze</a> |
+	 <a href="?rm=delete_customer&id=<TMPL_VAR NAME=id>" onClick="return confirm('really delete <TMPL_VAR NAME=name>?')">delete</a> <TMPL_VAR NAME=subs> ]
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr>
+</table>
+<br>
+</form>
+</body>

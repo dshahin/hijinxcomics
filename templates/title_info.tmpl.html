@@ -1,0 +1,56 @@
+<html>
+<head>
+<title><TMPL_VAR NAME="title"></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>title info mode:</b><br>
+</div>
+
+<p>
+<table border=0>
+<tr><td>
+<form action="" method=GET>
+<input type=hidden name=rm value=update_title>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+<input type=text size=50 name=title value="<TMPL_VAR NAME="title">">
+<input type=submit value="update">
+</form>
+</td>
+<td>
+<form action="" method=GET>
+<input type=hidden name=rm value=clone_title>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+<input type=text size=6 name=clone_id >
+<input type=submit value="clone subs">
+</form>
+</tr>
+</td>
+</table>
+<p>
+
+<a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>&limit=1000">
+<img border=0 width=400 height=300 src="?rm=chart&title_id=<TMPL_VAR NAME=id>">
+</a>
+<a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>">
+<img border=0 src="?rm=chart&title_id=<TMPL_VAR NAME=id>&mini=1&limit=6">
+<br>cycle sheet</a>  |  
+<TMPL_IF NAME=archived>
+<a href="?rm=unarchive&title_id=<TMPL_VAR NAME=id>&bm=title_info">unarchive title</a>
+<TMPL_ELSE>
+<a href="?rm=archive&title_id=<TMPL_VAR NAME=id>&bm=title_info" onClick="return confirm('really archive <TMPL_VAR NAME=title>?')">archive title</a> 
+</TMPL_IF>
+<br>
+title id: <TMPL_VAR NAME=id>
+total subscribers: <TMPL_VAR NAME=length>
+<br>
+<ol>
+<TMPL_LOOP NAME=CUSTOMERS>
+<li><a href=?rm=customer_info&id=<TMPL_VAR NAME=id>><TMPL_VAR NAME=name></a>
+</TMPL_LOOP>
+</ol>
+</body>
+</html>

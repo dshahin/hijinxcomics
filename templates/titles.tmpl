@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>edit customer: <TMPL_VAR NAME=login></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>customer comics subscription mode:</b><br>
+</div>
+
+
+<h1><TMPL_VAR NAME=login></h1>
+
+<table bgcolor=black><tr><td>
+<table border=0 bgcolor=white cellpadding=2><tr><td>
+<a href="?rm=customer_info&id=<TMPL_VAR NAME=id>">
+<TMPL_VAR NAME=login>
+</a>
+
+ currently subscribes to <b><TMPL_VAR NAME=number_of_subs></b> titles.
+</td></tr></table>
+</td></tr></table>
+<p>
+<TMPL_INCLUDE NAME="sub_alphabar.tmpl.html">
+<p>
+
+<form action="" method=GET>
+<input type=hidden name=id value=<TMPL_VAR NAME=id>>
+<input type=hidden name=rm value=edit_subscriptions>
+<input type=hidden name=letter value=<TMPL_VAR NAME=letter>>
+<input type=submit value="subscribe to checked titles">
+<p>
+<table bgcolor=black><tr><td>
+<table border=0 bgcolor=white width=500 cellpadding=2>
+<TMPL_LOOP NAME=COMICS>
+<tr> 
+	<td> <input type=checkbox name="title_<TMPL_VAR NAME=id>" <TMPL_VAR NAME=checked> </td>
+	<td width=100%> <TMPL_VAR NAME=name></td>
+	<td nowrap> 
+	   <a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a> |
+	   <a href="?rm=delete&id=<TMPL_VAR NAME=user_id>&title_id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>">unsubscribe</a> |
+	<a href="?rm=subscribe&id=<TMPL_VAR NAME=user_id>&title_id=<TMPL_VAR NAME=id>&letter=<TMPL_VAR NAME=letter>">add</a>
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr></table>
+<br>
+<input type=submit value="subscribe to checked titles">
+</form>
+
+
+</body>

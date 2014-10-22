@@ -1,0 +1,70 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=WEEK_NUM> weeks ago</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>previous week mode:</b><br>
+</div>
+
+
+<TMPL_IF NAME=WEEK_NUM>
+	<h1><TMPL_VAR NAME=WEEK_NUM> weeks ago</h1>
+<TMPL_ELSE>
+	<h1>last week</h1>
+</TMPL_IF>
+<a href=?rm=this_week>this week</a> | 
+<a href=?rm=last_week>last week</a> | 
+<a href=?rm=last_week&week_num=2>2 weeks ago</a> | 
+<a href=?rm=last_week&week_num=3>3 weeks ago</a> | 
+<a href=?rm=last_week&week_num=4>4 weeks ago</a> 
+<ol>
+<form action="" method=GET>
+<input type=hidden name=rm value=week_subs>
+<TMPL_LOOP NAME=NEXT_WEEK>
+<li><b><TMPL_VAR NAME=name> </b>  
+<a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a> 
+| <a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>">cycle</a>
+| <a href="?rm=remove_from_last_week&title_id=<TMPL_VAR NAME=id>&week_num=<TMPL_VAR NAME=NUM>">remove</a>
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+</TMPL_LOOP>
+</ol>
+<p>
+<!-- <input type=submit value="weekly subscriptions"> -->
+</form>
+<p>
+<form action="" method=GET>
+<input type=hidden name=rm value=next_week>
+<input type=hidden name=delete_week value=1>
+<input type=hidden name=week_num value=<TMPL_VAR name=week_num>>
+	<input type=submit value="clear all">
+</form>
+<!--
+<form action="" method=GET>
+<input type=hidden name=rm value=next_week>
+<input type=hidden name=week_num value=<TMPL_VAR name=week_num>>
+<input type=submit value="add to week">
+<table bgcolor=black><tr><td>
+<table border=0 bgcolor=white width=500 cellpadding=2>
+<TMPL_LOOP NAME=COMICS>
+<tr> 
+	<td> <input type=checkbox name="title_<TMPL_VAR NAME=id>" <TMPL_VAR NAME=checked> </td>
+	<td width=100%> <TMPL_VAR NAME=name> <b>- [<TMPL_VAR NAME=id>]</b></td>
+	<td nowrap> 
+	   <a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a>
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr></table>
+<br>
+<input type=submit value="shipped next week">
+<input type=reset value="clear all">
+</form>
+-->
+
+</body>

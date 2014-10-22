@@ -1,0 +1,114 @@
+
+sub chart {
+    use GD::Graph::linespoints;
+    use GD::Graph::Data;
+    my $self     = shift;
+    my $q        = $self->query();
+    my $dbh      = $self->{dbh};
+    my $title_id = $q->param("title_id");
+    my $limit    = $q->param("limit");
+    my $sth;
+
+    if ( $limit > 0 ) {
+        $sth = $dbh->prepare(
+            "select  issue, order_qty, week_1, week_2,
+			 rcv_qty, reorder, subs  from cycles where title_id = ? 
+			order by issue desc limit $limit ");
+    }
+    else {
+        $sth = $dbh->prepare(
+            "select  issue, order_qty, week_1, week_2,
+			 rcv_qty, reorder, subs  from cycles where title_id = ? order by issue "
+        );
+    }
+    $sth2 = $dbh->prepare("select name from titles where id = ?");
+	$sth2->execute($title_id);
+    my ($title) = $sth2->fetchrow_array;
+    my @issues;
+    my @orders;
+    my @sales;
+    my @subs;
+    my @week1;
+    my $max = 0;
+    $sth->execute($title_id) or die "can't execute $!";
+    unless ($sth->rows){
+          #warn "less than 1 row in graph";
+          push ( @issues, 0);
+          push ( @orders, 0);
+          push ( @sales, 0);
+          push ( @subs, 0);
+          push ( @week1, 0);
+    }
+
+    while ( my @cycle = $sth->fetchrow_array ) {
+        if ( ( $cycle[4] + $cycle[5] ) > $max ) { $max = $cycle[4] + $cycle[5] }
+        my $order   = $cycle[1];
+        my $issue   = $cycle[0];
+        my $week_1  = $cycle[2];
+        my $week_2  = $cycle[3];
+        my $rcv_qty = $cycle[4];
+        my $reorder = $cycle[5];
+        my $subs    = $cycle[6];
+        my $sellthru;
+
+        if ( $rcv_qty > 0 ) {
+            $sellthru = ( $rcv_qty + $reorder - $week_2 );
+        }
+        else {
+            $sellthru = 0;
+        }
+
+        push( @sales, $sellthru );
+        push( @week1, ( $rcv_qty - $week_1 ) );
+        push( @issues, $issue );
+        push( @subs,   $subs );
+        push( @orders, $rcv_qty + $reorder );
+    }
+    $max++;
+    my $num = @orders;
+    my $data;
+    my $label;
+    if ( $limit > 0 ) {
+        my @reverse_sales  = reverse @sales;
+        my @reverse_week1  = reverse @week1;
+        my @reverse_issues = reverse @issues;
+        my @reverse_orders = reverse @orders;
+        my @reverse_subs   = reverse @subs;
+        $data = [
+            \@reverse_issues, \@reverse_orders, \@reverse_sales,
+            \@reverse_week1,  \@reverse_subs
+        ];
+        $label = "$title $limit months";
+    }
+    else {
+        $data = [ \@issues, \@orders, \@sales, \@week1, \@subs ];
+        $label = "$title life cycle";
+    }
+
+    my $graph;
+    if ( $q->param("mini") == 1 ) {
+        $graph = GD::Graph::linespoints->new( 200, 150 )
+          or die "can't make new graph $!";
+        $graph ->set_title_font(GD::gdTinyFont);
+    }
+    else {
+        $graph = GD::Graph::linespoints->new( 400, 300 )
+          or die "can't make mini graph $!";
+    }
+    $graph->set(
+        x_label       => 'issue #',
+        y_label       => 'copies ordered',
+        title         => $label,
+        y_tick_number => 1,
+        y_min_value   => 0,
+        y_max_value   => "$max",
+        show_values   => \$data
+    );
+    my $gd = $graph->plot($data) or die "can't plot png $!";
+    my $format = $graph->export_format;
+    print $q->header( -type => "image/$format" );
+    binmode STDOUT;
+    print $gd->png();
+    exit;
+
+}

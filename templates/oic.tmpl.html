@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>OIC tool</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+
+<h1>order increase items</h1>
+                                                                                                                           
+<form action="" method=GET>
+<input type=hidden name=rm value=oic>
+after <input type=text name="date" size=10 maxlength=10 value="<TMPL_VAR NAME=today>" >
+<input type=submit  size=10 maxlength=10 value="date">
+</form>
+
+<table bgcolor=white border=1>
+
+<tr>
+	<th>itemno</th>
+	<th>price</th>
+	<th width=100>description</th>
+	<th>subs</th>
+	<th>qty</th>
+	<th>oic_date</th>
+</tr>
+<TMPL_LOOP NAME=ORDERS>
+<tr align=right bgcolor=<TMPL_VAR NAME=color>>
+	<td><a href=?order_form=<TMPL_VAR NAME=batchno>&rm=order_form&jump=1&jump_item=<TMPL_VAR NAME=linenum>&max=1><TMPL_VAR NAME=itemno></a></td>
+	<td>$<TMPL_VAR NAME=price></td>
+	<td width=500><TMPL_IF NAME=hijinx_id><a href="?rm=title_info&title_id=<TMPL_VAR NAME=hijinx_id>"><TMPL_VAR NAME=itemdescription><TMPL_ELSE><TMPL_VAR NAME=itemdescription></TMPL_IF></a>  #<TMPL_VAR NAME=issue></td>
+	<td><TMPL_VAR NAME=subs></td>
+	<td><TMPL_VAR NAME=qty></td>
+<td bgcolor=<TMPL_VAR NAME=color>><a href=https://retailer.diamondcomics.com/main/data_tools/ShoppingListAdd.asp?ItemNo=<TMPL_VAR NAME=itemno>><TMPL_VAR NAME=oicdate></a></td>
+</tr>
+</TMPL_LOOP>
+</table>
+</body>
+</html>

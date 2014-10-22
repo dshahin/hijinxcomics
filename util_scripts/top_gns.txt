@@ -1,0 +1,20 @@
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10356><img src=http://www.comicbookshelf.com/isbn?isbn=097427156X&size=2></a><br>BOOKHUNTER
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10261><img src=http://www.comicbookshelf.com/isbn?isbn=078512179X&size=2></a><br>CIVIL WAR TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10566><img src=http://www.comicbookshelf.com/isbn?isbn=0785117903&size=2></a><br>ULTIMATES 2 VOL 2 TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=323><img src=http://www.comicbookshelf.com/isbn?isbn=0930289234&size=2></a><br>WATCHMEN
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=67><img src=http://www.comicbookshelf.com/isbn?isbn=1593072716&size=2></a><br>CLONE WARS ADVENTURES, VOL. 2
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=66><img src=http://www.comicbookshelf.com/isbn?isbn=1593073070&size=2></a><br>CLONE WARS ADVENTURES, VOL. 3
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=5415><img src=http://www.comicbookshelf.com/isbn?isbn=1593074832&size=2></a><br>STAR WARS CLONE WARS ADVENTURES VOL 5 TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=96><img src=http://www.comicbookshelf.com/isbn?isbn=0785110933&size=2></a><br>ULTIMATES 2 VOL 1 GODS AND MONSTERS
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=65><img src=http://www.comicbookshelf.com/isbn?isbn=1593072430&size=2></a><br>CLONE WARS ADVENTURES, VOL. 1
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=258><img src=http://www.comicbookshelf.com/isbn?isbn=1569717516&size=2></a><br>FRAY
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10049><img src=http://www.comicbookshelf.com/isbn?isbn=0785123091&size=2></a><br>MARVEL ADVENTURES SPIDER-MAN VOL 5 DIGEST TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=1812><img src=http://www.comicbookshelf.com/isbn?isbn=078511078X&size=2></a><br>ULTIMATES VOL 2 HOMELAND SECURITY TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=508><img src=http://www.comicbookshelf.com/isbn?isbn=1421501686&size=2></a><br>DEATH NOTE, VOL. 1
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10496><img src=http://www.comicbookshelf.com/isbn?isbn=1401213162&size=2></a><br>FABLES VOL. 9: SONS OF EMPIRE TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=4237><img src=http://www.comicbookshelf.com/isbn?isbn=1593074492&size=2></a><br>SERENITY TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10088><img src=http://www.comicbookshelf.com/isbn?isbn=0785119744&size=2></a><br>CIVIL WAR ROAD TO CIVIL WAR TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10547><img src=http://www.comicbookshelf.com/isbn?isbn=0785125132&size=2></a><br>ANNIHILATION BOOK 3 HC
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10666><img src=http://www.comicbookshelf.com/isbn?isbn=1401213642&size=2></a><br>52 VOL 2 TP
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=5988><img src=http://www.comicbookshelf.com/isbn?isbn=1894937791&size=2></a><br>SHENZHEN: A TRAVELOGUE FROM CHINA
+<li><a href=http://www.comicbookshelf.com/store?rm=detail&id=10396><img src=http://www.comicbookshelf.com/isbn?isbn=1932386572&size=2></a><br>MOUSE GUARD VOL 1 FALL 1152 HC

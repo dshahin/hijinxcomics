@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>order form <tmpl_var name=form></title>
+</head>
+<body bgcolor=lightgray>
+<table cellspacing=2 cellpadding=2 width=600>
+<TMPL_LOOP NAME=COMICS>
+<tr>
+	<td colspan=2>qty:<input type=text name="qty" size=3 maxlength=4>
+	<a href="http://localhost/hijinx?rm=title_info&title_id=<TMPL_VAR NAME=id>"><tmpl_var name=itemdescription></a> #<tmpl_var name=issue>
+	$<tmpl_var name=price>  <TMPL_VAR NAME=vendorname></td>
+</tr>
+<tr>
+<TMPL_IF NAME=id>
+<td valign=top>
+<a href="http://localhost/hijinx?rm=cycles&title_id=<TMPL_VAR NAME=id>" target=0>
+<img border=0  src=http://localhost/hijinx?rm=chart&title_id=<TMPL_VAR NAME=id>&limit=6&mini=1>
+</a>
+</td>
+<td colspan=2 >
+<TMPL_ELSE>
+<td colspan=3>
+</TMPL_IF>
+<TMPL_VAR name=desc>
+</td>
+</tr>
+</TMPL_LOOP>
+</table>
+
+</body>
+</html>

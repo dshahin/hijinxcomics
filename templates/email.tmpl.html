@@ -1,0 +1,18 @@
+
+<html>
+<head>
+<title>email</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+
+<h1>email all customers</h1>
+subject<br>
+	<input type=text size=55 name=title value="<TMPL_VAR NAME=title>"><br>
+message<br>
+	<textarea rows=10 cols=55 name=info><TMPL_VAR NAME=INFO></textarea><p>
+
+<input type=submit value="send email">
+</body>

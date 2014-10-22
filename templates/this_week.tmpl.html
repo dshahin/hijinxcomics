@@ -1,0 +1,166 @@
+<html>
+<head>
+<title>this week <TMPL_VAR NAME=WEEK_NUM></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+<script language="JavaScript">
+
+// thanks to the folks at SAJAX for the javascript functions
+// http://www.modernmethod.com/sajax/
+var rs_debug_mode	= false;
+
+// debug function
+function rs_debug(text) { if( rs_debug_mode ) { alert("RSD: " + text); } }
+
+// init function
+function rs_init_object()
+{
+	rs_debug("rs_init_object() called..");
+
+	var A;
+	try	{ A = new ActiveXObject("Msxml2.XMLHTTP"); }
+	catch( e )
+	{
+		try			{ A = new ActiveXObject("Microsoft.XMLHTTP"); }
+		catch( oc )	{ A = null; }
+	}
+
+	if( !A && typeof XMLHttpRequest != "undefined" )	{ A = new XMLHttpRequest(); }
+	if( !A )											{ rs_debug( "Could not create connection object." ); }
+
+	return A;
+}
+
+
+// wrapper for rs_run
+function rs_run()
+{
+	// count args; build URL
+	var i, x, a;
+	a		= rs_run.arguments;
+	var url	= a[0];
+	for( i = 2; i < a.length; i++ ) { url = url + "&rsargs=" + escape( a[i] ); }
+
+	// load object
+	x = rs_init_object();
+	x.open("GET", url, true);
+	x.onreadystatechange = function()
+	{
+		if( x.readyState != 4 ) { return; }
+
+		rs_debug( "received " + x.responseText );
+
+		var status	= x.responseText.charAt(0);
+		var data	= x.responseText.substring(2);
+
+		if( status == "-" ) { alert("Error: " + data ); }
+		else    			{ a[1]( data ); }
+	}
+
+	x.send( null );
+	rs_debug( "rs_run url = " + url );
+	rs_debug( "rs_run waiting.." );
+}
+function calc_callback( z )
+{
+	//document.getElementById("z").value = z;
+}
+
+function do_multiply()
+{
+    var x = document.getElementById("x").value;
+    var y = document.getElementById("y").value;
+    
+    rs_run( "?rm=multiply", calc_callback, x, y );
+}
+
+function rem_this_week(title_id){
+	rs_run ("?rm=ajax_rem_this_week", calc_callback, title_id, title_id);
+}
+</script>
+</head>
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<p>
+<div  id="tooltip"  style="display: none; background: white; " >
+<b>[<a href="#"onclick="showhide('tooltip');">X</a>] this week tips:</b>
+<li>upload diamond invoice on disk format files with the <b>browse</b> button
+<li>clicking on <b>upload invoice</b> will load the new comics from the uploaded invoice to the existing list
+<li>clicking on <b>upload and rotate weeks</b> does the same, but first rotates this weeks titles to last week and rotates all previous 4 weeks
+</div>
+
+
+<h1>this week</h1>
+<a href=?rm=this_week>this week</a> | 
+<a href=?rm=last_week>last week</a> | 
+<a href=?rm=last_week&week_num=2>2 weeks ago</a> | 
+<a href=?rm=last_week&week_num=3>3 weeks ago</a> | 
+<a href=?rm=last_week&week_num=4>4 weeks ago</a> |
+<a href=?rm=cycle_worksheet>4 week worksheet</a> |
+<a href=?rm=week_subs>weekly subs</a> | 
+<a href=?rm=week_subs_by_cust>weekly subs by customer</a> 
+<p>
+
+<form action="" method=GET ENCTYPE="multipart/form-data">
+<input type="hidden" name="rm" value="receive_invoice">
+ <!-- <INPUT TYPE="file" NAME="invoice" > -->
+<select name=invoice_id>
+<TMPL_LOOP name=invoices>
+<OPTION  value="<TMPL_VAR name=invoice_id>"><TMPL_VAR name=dcd_cust_id> <TMPL_VAR name=date></OPTION>
+</TMPL_LOOP>
+</select>
+
+ <INPUT TYPE="submit" NAME="Submit" VALUE="upload invoice">
+ <INPUT TYPE="submit" NAME="rotate" VALUE="upload and rotate weeks">
+<!-- <INPUT TYPE="checkbox" NAME="ignore_direct" value=1 checked> ignore direct ship items -->
+</form>
+<form action="" method=POST>
+<input type=hidden name=rm value=add_next>
+	<input type=submit value="copy to last week">
+</form>
+<form action="" method=POST>
+<input type=hidden name=rm value=this_week>
+<input type=hidden name=delete_week value=1>
+	<input type=submit value="clear all">
+</form>
+<ol>
+<TMPL_LOOP NAME=THIS_WEEK>
+<div id="<TMPL_VAR NAME=id>">
+<li> 
+<b><TMPL_VAR NAME=name>  #<TMPL_VAR NAME=subs>  </b>  
+<a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>">info</a> 
+| <a href="?rm=cycles&title_id=<TMPL_VAR NAME=id>">cycle</a>
+| <a href="?rm=remove_from_week&title_id=<TMPL_VAR NAME=id>">remove</a> 
+
+
+<!--| <a onclick="rem_this_week('<TMPL_VAR NAME=id>');hide('<TMPL_VAR NAME=id>');"  href="#<TMPL_VAR NAME=id>" name="#<TMPL_VAR NAME=id>">remove</a> -->
+<input type=hidden name=title_id value=<TMPL_VAR NAME=id>>
+</div>
+</TMPL_LOOP>
+</ol>
+<p>
+</form>
+<p>
+<!--
+<form action="" method=POST>
+<input type=hidden name=rm value=this_week>
+<input type=submit value="add to this week">
+<table bgcolor=black><tr><td>
+<table border=0 bgcolor=white width=500 cellpadding=2>
+<TMPL_LOOP NAME=COMICS>
+<tr> 
+	<td> <input type=checkbox name="title_<TMPL_VAR NAME=id>" <TMPL_VAR NAME=checked> </td>
+	<td width=100%> <a href="?rm=title_info&title_id=<TMPL_VAR NAME=id>"><TMPL_VAR NAME=name></a><b> [<TMPL_VAR NAME=id>]</b></td>
+	<td nowrap> 
+	   
+	</td>
+</tr>
+</TMPL_LOOP>
+</table>
+</td></tr>
+</table>
+</form>
+<br>
+-->
+
+</body>
+</html>

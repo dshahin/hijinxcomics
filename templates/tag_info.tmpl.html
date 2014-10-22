@@ -1,0 +1,34 @@
+<html>
+<head>
+<title><TMPL_VAR NAME=store_name>tag info <TMPL_VAR NAME=TODAY></title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<table>
+<tr>
+<td valign=top width=200>
+<center>all <TMPL_VAR NAME=type> tags</center>
+<ol>
+<TMPL_LOOP NAME=all_tags>
+<li><a href='?rm=tag_info&type=book&tag=<TMPL_VAR NAME=safe>'><TMPL_VAR NAME=tag></a> <TMPL_VAR NAME=count> [<a href='?rm=remove_tag&type=book&tag=<TMPL_VAR NAME=safe>'  onClick="return confirm('really delete all instances of tag: <TMPL_VAR NAME=tag>?')">x</a>]
+</TMPL_LOOP>
+</ol>
+</td>
+<td valign=top>
+<center>
+<h2>tag: <TMPL_VAR NAME=tag> <br> type: <TMPL_VAR NAME=type></h2>
+</center>
+<hr>
+<ol>
+<TMPL_LOOP NAME=items>
+<li>(<a href=?rm=del_tag&tag=<TMPL_VAR NAME=safe>&id=<TMPL_VAR NAME=id>&type=book&isbn=<TMPL_VAR NAME=isbn>>x</a>) 
+<a href=?rm=books&isbn=<TMPL_VAR NAME=isbn>><TMPL_VAR NAME=title></a> 
+</TMPL_LOOP>
+</ol>
+</td>
+</tr>
+</table>
+
+</body>

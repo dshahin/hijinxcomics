@@ -1,0 +1,246 @@
+<TMPL_INCLUDE NAME="tracking.tmpl.html">
+<script language="JavaScript">
+var ver    = parseFloat (navigator.appVersion.slice(0,4));
+var verIE  = (navigator.appName == "Microsoft Internet Explorer" ? ver : 0.0);
+var verNS  = (navigator.appName == "Netscape" ? ver : 0.0);
+var verOP  = (navigator.appName == "Opera"    ? ver : 0.0);
+var verOld = (verIE < 4.0 && verNS < 5.0);
+var isMSIE = (verIE >= 4.0);
+
+function popup(mylink, windowname)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+window.open(href, windowname, 'width=500,height=700,scrollbars=yes');
+return false;
+}
+function blockEnter(evt){
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ?  evt.charCode:
+		((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13 || charCode == 3){
+		return false;
+	}else{
+		return true;
+	}
+}
+function OpenShoppingListWindow(ItemCode)
+{
+	myWindow = window.open('https://retailer.diamondcomics.com/main/ShoppingListAdd.asp?ItemNo='+ItemCode,'ShoppingList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=600');
+	return false;
+}
+function OpenISBNWindow(ISBN)
+{
+	myWindow = window.open('https://retailer.diamondcomics.com/main/StockLookup.asp?QueryItem='+ISBN,'ShoppingList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=600');
+	return false;
+}
+                                                                                                                            
+function OpenBTWindow1(ISBN)
+{
+	myWindow = window.open('http://tsprod.btol.com/Titlesource/Search.asp?Search='+ISBN,'BTList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=1000');
+	return false;
+}
+function OpenBTWindow2(ISBN)
+{
+	myWindow = window.open('http://tsprod2.btol.com/Titlesource/Search.asp?Search='+ISBN,'BTList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=1000');
+	return false;
+}
+function OpenBTWindow3(ISBN)
+{
+	myWindow = window.open('http://tsprod3.btol.com/Titlesource/Search.asp?Search='+ISBN,'BTList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=1000');
+	return false;
+}
+function OpenBTWindow4(ISBN)
+{
+	myWindow = window.open('http://tsprod4.btol.com/Titlesource/Search.asp?Search='+ISBN,'BTList','location=no,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no, height=500, width=1000');
+	return false;
+}
+function findKeyMap (keycode, shift, ctrl, alt) {
+    for (var i = 0; i < fKeyMap.length; i++)
+        if (fKeyMap[i].keyCode  == keycode
+            && fKeyMap[i].shift == shift
+            && fKeyMap[i].ctrl  == ctrl
+            && fKeyMap[i].alt   == alt)
+               if (fKeyMap[i].isMapped)
+                  return ("mapped as " + fKeyMap[i].vKey);
+               else
+                  return ("unmapped as " + fKeyMap[i].vKey);
+                                                                                                                            
+    return "not mapped to anything in the glinkkbd.js table";
+} // findKeyMap
+                                                                                                                            
+function doKeyDown (e) {
+    var myKeyCode      = (!isMSIE) ? e.which : e.keyCode;
+    var mySrcElement   = (!isMSIE) ? e.target : e.srcElement;
+    var isShiftPressed = e.shiftKey;
+    var isCtrlPressed  = e.ctrlKey;
+    var isAltPressed   = e.altKey;
+                                                                                                                            
+    if (verOld) return true;
+
+                                                                                                                            
+    // Enter(13), Shift(16), Ctrl(17), Alt(18), CapsLock(20) keys?
+    if (myKeyCode >= 13 && myKeyCode <= 20)
+        return true;
+    if (myKeyCode == 113)
+        location.replace("?rm=customers")
+    if (myKeyCode == 115)
+        location.replace("?rm=books")
+        return true;
+
+    alert("Key code=" + myKeyCode
+        + "; Shift=" + isShiftPressed
+        + "; Ctrl=" + isCtrlPressed
+        + "; Alt=" + isAltPressed
+        + "\nYo! This key is " + findKeyMap (myKeyCode, isShiftPressed, isCtrlPressed, isAltPressed)
+        );
+                                                                                                                            
+   return false;
+} // doKeyDown
+var state = 'none';
+
+function set_rcv(input_ref, val){
+	input = document.getElementById("input_ref").value ;
+
+	
+}
+
+function hide(layer_ref) {
+	state = 'none';
+	if (document.all) { //IS IE 4 or 5 (or 6 beta)
+		eval( "document.all." + layer_ref + ".style.display = state");
+	}
+	if (document.layers) { //IS NETSCAPE 4 or below
+		document.layers[layer_ref].display = state;
+	}
+	if (document.getElementById &&!document.all) {
+		hza = document.getElementById(layer_ref);
+		hza.style.display = state;
+	}
+
+}
+
+
+
+function showhide(layer_ref) {
+
+	if (state == 'block') {
+		state = 'none';
+	}
+	else {
+		state = 'block';
+	}
+	if (document.all) { //IS IE 4 or 5 (or 6 beta)
+		eval( "document.all." + layer_ref + ".style.display = state");
+	}
+	if (document.layers) { //IS NETSCAPE 4 or below
+		document.layers[layer_ref].display = state;
+	}
+	if (document.getElementById &&!document.all) {
+		hza = document.getElementById(layer_ref);
+		hza.style.display = state;
+	}
+}
+
+</script>
+
+
+
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Example: Website Top Nav With Submenus Built From Markup (YUI Library)</title>
+
+        
+        <!-- Standard reset, fonts and grids -->
+
+        <!-- <link rel="stylesheet" type="text/css" href="/yui/build/reset-fonts-grids/reset-fonts-grids.css"> -->
+
+ 
+
+        <!-- CSS for Menu -->
+
+        <link rel="stylesheet" type="text/css" href="/yui/build/menu/assets/menu.css">
+ 
+ 
+        <!-- Page-specific styles -->
+
+        <style type="text/css">
+
+            div.yui-b p {
+            
+                margin:0 0 .5em 0;
+                color:#999;
+            
+            }
+            
+            div.yui-b p strong {
+            
+                font-weight:bold;
+                color:#000;
+            
+            }
+            
+            div.yui-b p em {
+
+                color:#000;
+            
+            }            
+            
+            h1 {
+
+                font-weight:bold;
+                margin:0 0 1em 0;
+                padding:.25em .5em;
+
+            }
+
+            #productsandservices {
+            
+                margin:0 0 10px 0;
+            
+            }
+
+        </style>
+
+                <!-- Namespace source file -->
+
+        <script type="text/javascript" src="/yui/build/yahoo/yahoo-min.js"></script>
+
+        <!-- Dependency source files -->
+
+        <script type="text/javascript" src="/yui/build/event/event-min.js"></script>
+        <script type="text/javascript" src="/yui/build/dom/dom-min.js"></script>
+
+
+        <!-- Container source file -->
+        <script type="text/javascript" src="/yui/build/container/container_core-min.js"></script>
+
+        <!-- Menu source file -->
+        <script type="text/javascript" src="/yui/build/menu/menu-min.js"></script>
+
+        <!-- Page-specific script -->
+
+        <script type="text/javascript">
+
+            YAHOO.example.onMenuBarReady = function(p_oEvent) {
+
+                // Instantiate and render the menu bar
+
+                var oMenuBar = new YAHOO.widget.MenuBar("productsandservices", {  hidedelay:750  });
+
+                oMenuBar.render();
+
+            }
+
+
+            // Initialize and render the menu bar when it is available in the DOM
+
+            YAHOO.util.Event.onContentReady("productsandservices", YAHOO.example.onMenuBarReady);
+
+        </script>
+
+

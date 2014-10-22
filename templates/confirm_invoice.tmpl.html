@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>invoice</title>
+<TMPL_INCLUDE NAME="javascript.tmpl.html">
+</head>
+
+<TMPL_INCLUDE NAME="toolbar.tmpl.html">
+<TMPL_INCLUDE NAME="body.tmpl.html">
+<input type=hidden name=rm value=list>
+
+<form>
+<input type="hidden" name="rm" value="confirm_invoice">
+<h2>invoice exceptions</h2>
+<TMPL_LOOP name="issues">
+<table>
+<tr>
+    <td colspan=2>
+	<input type="hidden" name="dcd_<TMPL_VAR name=number>" value="<TMPL_VAR name=dcd>">
+	<input type=hidden name="upc_<TMPL_VAR name=number>" value=<TMPL_VAR name=upc>>
+    <input type="textinput" name="qty_<TMPL_VAR name=number>" value="<TMPL_VAR name=qty>" size=4>
+    <input type="textinput" name="title_<TMPL_VAR name=number>" value="<TMPL_VAR name=title>" size=50>
+    # <input type="textinput" name="issue_<TMPL_VAR name=number>" value="<TMPL_VAR name=issue>" size=3>
+<SELECT NAME=action_<TMPL_VAR name=number> >
+<OPTION SELECTED value=1>new</OPTION>
+<OPTION value=2 >ignore</OPTION>
+<OPTION value=3>use id# </OPTION>
+</SELECT>
+<input type="textinput" name="alt_id_<TMPL_VAR name=number>" size=5> 
+    </td>
+</tr>
+</table>
+</TMPL_LOOP>
+<p>
+<input type=submit value="confirm invoice">
+</form>
+                                                                                                       
+</body>
+</html>
+
+
+
+
+

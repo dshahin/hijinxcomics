@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>ComicsPro</title>
+</head>
+<html>
+<body bgcolor=white>
+<center>
+<form name=auth action="?" method=POST>
+<input type=hidden name=rm value=login>
+<table border=0 bgcolor=white >
+<tr height=50></tr>
+</table>
+<TMPL_VAR NAME=message>
+<p>
+<a href=http://www.hijinxcomics.com><img src=/images/logo.gif border=0></a>
+<a href=http://www.firefox.org><img src=/images/firefox.png border=0></a>
+<p>
+This site is tested and supported exclusively on the <a href=http://www.firefox.org>Firefox</a> web browser.
+
+<table border=0 bgcolor=white >
+<tr height=20></tr>
+</tr>
+<tr>
+	<td align=right>login</td>
+	<td><input type=text length=20 name=login></td>
+</tr>
+<tr>
+	<td align=right>password</td>
+	<td><input type=password name=pass length=20></td>
+</tr>
+<tr cellpadding=0 cellspacing=0 align=top bgcolor=white>
+	<td  align=right colspan=2>
+	<input type=checkbox name=agree checked>I have read and agree to the <a href=/tos.html>terms of service</a>
+<p>
+		<input type=submit value="login">
+</form>
+<br>
+<form action="?" method=POST>
+<input type=hidden name=rm value=new_account>
+<!--input type=submit value="create account"-->
+</td></tr>
+</form>
+
+<script language="JavaScript"> document.auth.login.focus(); </script> 
+</table>
+</center>
+
+</body>
+</html>
